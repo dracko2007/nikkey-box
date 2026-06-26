@@ -69,12 +69,20 @@ export const adminService = {
       const snap = await getDocs(collection(db, COL));
       snap.forEach((d) => {
         const data = d.data() as any;
-        list.push({ username: d.id, name: data.name, role: data.role, addedAt: data.addedAt, addedBy: data.addedBy });
+        // Ignora documentos sem name (ex: criados manualmente com só email)
+        if (!data.name && !data.email) return;
+        list.push({
+          username: d.id,
+          name: data.name || data.email || d.id,
+          role: data.role ?? 1,
+          addedAt: data.addedAt,
+          addedBy: data.addedBy,
+        });
       });
     } catch (e) {
       devWarn('[admin] getAdmins falhou:', e);
     }
-    return list.sort((a, b) => b.role - a.role || a.name.localeCompare(b.name));
+    return list.sort((a, b) => (b.role ?? 0) - (a.role ?? 0) || (a.name ?? '').localeCompare(b.name ?? ''));
   },
 
   async addAdmin(name: string, password: string, role: AdminRole, addedBy?: string): Promise<{ ok: boolean; error?: string }> {
