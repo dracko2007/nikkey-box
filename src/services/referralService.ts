@@ -8,7 +8,7 @@ const REFERRAL_REWARD_POINTS = 3000; // pontos para quem indicou
 export const referralService = {
   // Gera o link de indicação do usuário
   getReferralLink(userId: string): string {
-    const base = typeof window !== 'undefined' ? window.location.origin : 'https://japanexpress-store.com';
+    const base = typeof window !== 'undefined' ? window.location.origin : 'https://nikkeybox.com.br';
     return `${base}?ref=${userId}`;
   },
 

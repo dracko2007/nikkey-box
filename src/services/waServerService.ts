@@ -39,14 +39,14 @@ export const msgPaymentConfirmed = (order: OrderLike): string =>
   `Seu pagamento do pedido *${order.orderNumber}* foi confirmado! ✅\n\n` +
   `O preparo (Personal Shopper) começa em até *2-3 dias úteis*. ` +
   `Avisaremos aqui assim que iniciarmos a separação. Obrigado! 🛍️\n\n` +
-  `_Japan Express — Importados do Japão_`;
+  `_Nikkey Box — Importados do Japão_`;
 
 /** Mensagem: pedido sendo preparado. */
 export const msgPreparing = (order: OrderLike): string =>
   `Olá ${getFirstName(order)}! 📦\n\n` +
   `Boas notícias: começamos a *preparar* o seu pedido *${order.orderNumber}*! 🎉\n\n` +
   `Em breve ele será enviado e você receberá o código de rastreio por aqui.\n\n` +
-  `_Japan Express — Importados do Japão_`;
+  `_Nikkey Box — Importados do Japão_`;
 
 /** Mensagem: pedido enviado, com itens e rastreio. */
 export const msgShipped = (order: OrderLike, trackingNumber: string, trackingUrl: string, carrier: string): string => {
@@ -65,7 +65,7 @@ export const msgShipped = (order: OrderLike, trackingNumber: string, trackingUrl
   }
   msg +=
     `Qualquer dúvida é só responder aqui. Obrigado pela compra! 🙏\n\n` +
-    `_Japan Express — Importados do Japão_`;
+    `_Nikkey Box — Importados do Japão_`;
   return msg;
 };
 

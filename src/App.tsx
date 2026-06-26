@@ -17,7 +17,6 @@ import { referralService } from "@/services/referralService";
 import ErrorBoundary from "./components/ErrorBoundary";
 import RequireAdmin from "./components/RequireAdmin";
 import CookieBanner from "./components/CookieBanner";
-import InstallPrompt from "./components/InstallPrompt";
 import MaintenancePage from "./pages/Maintenance";
 
 // Code splitting: cada página carregada apenas quando necessária
@@ -169,7 +168,7 @@ const FullApp: React.FC = () => (
 const CheckingScreen: React.FC = () => (
   <div className="min-h-screen bg-gradient-to-b from-pink-100 via-pink-50 to-white flex items-center justify-center">
     <div className="flex flex-col items-center gap-4">
-      <img src="/logo.jpg" alt="Japan Express" className="w-20 h-20 rounded-full object-cover shadow-lg animate-pulse" />
+      <img src="/logo.jpg" alt="Nikkey Box" className="w-20 h-20 rounded-full object-cover shadow-lg animate-pulse" />
       <div className="flex gap-1.5">
         <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce [animation-delay:0ms]" />
         <span className="w-2 h-2 rounded-full bg-primary/60 animate-bounce [animation-delay:150ms]" />
@@ -199,12 +198,10 @@ const MaintenanceShell: React.FC = () => {
   return <FullApp />;
 };
 
-// CookieBanner e InstallPrompt ficam FORA do MaintenanceShell — aparecem em qualquer estado
 const App = () => (
   <BrowserRouter>
     <LanguageProvider>
       <CookieBanner />
-      <InstallPrompt />
       <MaintenanceShell />
     </LanguageProvider>
   </BrowserRouter>

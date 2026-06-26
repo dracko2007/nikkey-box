@@ -8,7 +8,7 @@ import { useProducts } from '@/context/ProductsContext';
 import { useToast } from '@/hooks/use-toast';
 import { affiliateService, Affiliate, PendingCommission, TIER_CONFIG, AffiliateTier } from '@/services/affiliateService';
 
-const SITE_URL = 'https://japanexpress-store.com';
+const SITE_URL = 'https://nikkeybox.com.br';
 
 const AffiliatePage: React.FC = () => {
   const { user, isAuthenticated } = useUser();
@@ -157,7 +157,7 @@ const AffiliatePage: React.FC = () => {
                               <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-bold ${
                                 tier === 'gold'   ? 'bg-yellow-100 text-yellow-700' :
                                 tier === 'silver' ? 'bg-gray-100 text-gray-600' :
-                                                    'bg-pink-100 text-pink-700'
+                                                    'bg-purple-100 text-violet-800'
                               }`}>{cfg.emoji} {cfg.label}</span>
                               <div>
                                 <div className="flex justify-between text-[10px] text-muted-foreground mb-0.5">
@@ -313,7 +313,7 @@ const AffiliatePage: React.FC = () => {
                   <div key={key} className={`rounded-xl border-2 p-4 ${
                     key === 'gold'   ? 'border-yellow-300 bg-yellow-50 dark:bg-yellow-950/20' :
                     key === 'silver' ? 'border-gray-300 bg-gray-50 dark:bg-gray-900/30' :
-                                       'border-pink-200 bg-pink-50 dark:bg-pink-950/20'
+                                       'border-purple-200 bg-purple-50 dark:bg-purple-950/20'
                   }`}>
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">

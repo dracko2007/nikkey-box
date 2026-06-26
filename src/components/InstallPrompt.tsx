@@ -90,11 +90,11 @@ const InstallPrompt: React.FC = () => {
     return (
       <div className="fixed bottom-0 inset-x-0 z-[9998] p-4 animate-in slide-in-from-bottom duration-300">
         <div className="max-w-lg mx-auto bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
-          <div className="h-1 bg-gradient-to-r from-pink-400 to-pink-400" />
+          <div className="h-1 bg-gradient-to-r from-violet-400 to-violet-400" />
           <div className="p-4 flex items-center gap-4">
-            <img src="/icons/icon-72x72.png" alt="Japan Express" className="w-14 h-14 rounded-xl shadow-md flex-shrink-0" />
+            <img src="/icons/icon-72x72.png" alt="Nikkey Box" className="w-14 h-14 rounded-xl shadow-md flex-shrink-0" />
             <div className="flex-1 min-w-0">
-              <p className="text-white font-bold text-sm leading-tight">Instalar Japan Express</p>
+              <p className="text-white font-bold text-sm leading-tight">Instalar Nikkey Box</p>
               <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">
                 Adicione à tela inicial para acesso rápido às compras, sem abrir o navegador.
               </p>
@@ -112,7 +112,7 @@ const InstallPrompt: React.FC = () => {
             </button>
             <button
               onClick={installAndroid}
-              className="flex-1 py-2 rounded-xl bg-pink-500 text-white text-sm font-bold flex items-center justify-center gap-2 hover:bg-pink-600 transition-colors"
+              className="flex-1 py-2 rounded-xl bg-purple-500 text-white text-sm font-bold flex items-center justify-center gap-2 hover:bg-violet-700 transition-colors"
             >
               <Download className="w-4 h-4" /> Instalar
             </button>
@@ -128,9 +128,9 @@ const InstallPrompt: React.FC = () => {
       return (
         <div className="fixed bottom-0 inset-x-0 z-[9998] p-4 animate-in slide-in-from-bottom duration-300">
           <div className="max-w-lg mx-auto bg-gray-900 rounded-2xl shadow-2xl overflow-hidden">
-            <div className="h-1 bg-gradient-to-r from-pink-400 to-pink-400" />
+            <div className="h-1 bg-gradient-to-r from-violet-400 to-violet-400" />
             <div className="p-4 flex items-center gap-4">
-              <img src="/icons/icon-72x72.png" alt="Japan Express" className="w-14 h-14 rounded-xl shadow-md flex-shrink-0" />
+              <img src="/icons/icon-72x72.png" alt="Nikkey Box" className="w-14 h-14 rounded-xl shadow-md flex-shrink-0" />
               <div className="flex-1 min-w-0">
                 <p className="text-white font-bold text-sm">Instalar no iPhone / iPad</p>
                 <p className="text-gray-400 text-xs mt-0.5">Adicione à tela inicial para uma experiência de app.</p>
@@ -145,7 +145,7 @@ const InstallPrompt: React.FC = () => {
               </button>
               <button
                 onClick={() => setIosGuide(true)}
-                className="flex-1 py-2 rounded-xl bg-pink-500 text-white text-sm font-bold flex items-center justify-center gap-2 hover:bg-pink-600 transition-colors"
+                className="flex-1 py-2 rounded-xl bg-purple-500 text-white text-sm font-bold flex items-center justify-center gap-2 hover:bg-violet-700 transition-colors"
               >
                 <Share className="w-4 h-4" /> Como instalar
               </button>
@@ -159,7 +159,7 @@ const InstallPrompt: React.FC = () => {
     return (
       <div className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-end p-4 animate-in fade-in duration-200">
         <div className="w-full max-w-sm mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
-          <div className="h-1 bg-gradient-to-r from-pink-400 to-pink-400" />
+          <div className="h-1 bg-gradient-to-r from-violet-400 to-violet-400" />
           <div className="p-5">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2">
@@ -173,7 +173,7 @@ const InstallPrompt: React.FC = () => {
 
             <div className="space-y-3">
               <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
-                <div className="w-7 h-7 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
+                <div className="w-7 h-7 rounded-full bg-purple-100 text-violet-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">1</div>
                 <div>
                   <p className="text-sm font-semibold text-gray-800">Toque em Compartilhar</p>
                   <p className="text-xs text-gray-500 mt-0.5">Ícone <Share className="inline w-3 h-3" /> na barra inferior do Safari</p>
@@ -181,7 +181,7 @@ const InstallPrompt: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
-                <div className="w-7 h-7 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
+                <div className="w-7 h-7 rounded-full bg-purple-100 text-violet-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">2</div>
                 <div>
                   <p className="text-sm font-semibold text-gray-800">Role e toque em "Adicionar à Tela de Início"</p>
                   <p className="text-xs text-gray-500 mt-0.5 flex items-center gap-1">Ícone <Plus className="inline w-3 h-3" /> no menu que abre</p>
@@ -189,17 +189,17 @@ const InstallPrompt: React.FC = () => {
               </div>
 
               <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
-                <div className="w-7 h-7 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
+                <div className="w-7 h-7 rounded-full bg-purple-100 text-violet-700 flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">3</div>
                 <div>
                   <p className="text-sm font-semibold text-gray-800">Toque em "Adicionar"</p>
-                  <p className="text-xs text-gray-500 mt-0.5">O ícone Japan Express aparece na tela inicial 🎉</p>
+                  <p className="text-xs text-gray-500 mt-0.5">O ícone Nikkey Box aparece na tela inicial 🎉</p>
                 </div>
               </div>
             </div>
 
             <button
               onClick={dismiss}
-              className="w-full mt-4 py-2.5 rounded-xl bg-pink-500 text-white text-sm font-bold hover:bg-pink-600 transition-colors"
+              className="w-full mt-4 py-2.5 rounded-xl bg-purple-500 text-white text-sm font-bold hover:bg-violet-700 transition-colors"
             >
               Entendi!
             </button>

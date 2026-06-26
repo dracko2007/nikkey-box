@@ -7,7 +7,7 @@ import { Product } from '@/types';
 
 const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY;
 const FROM_EMAIL = import.meta.env.VITE_FROM_EMAIL || 'onboarding@resend.dev';
-const STORE_URL = 'https://japanexpress-store.com';
+const STORE_URL = 'https://nikkeybox.com.br';
 
 const MONTHS = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
 
@@ -22,7 +22,7 @@ const PromoNotificationModal: React.FC<Props> = ({ onClose }) => {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   // Composer
-  const [subject, setSubject] = useState('🌸 Oferta Especial - Japan Express');
+  const [subject, setSubject] = useState('🌸 Oferta Especial - Nikkey Box');
   const [headline, setHeadline] = useState('Oferta imperdível para você!');
   const [extraMsg, setExtraMsg] = useState('Aproveite enquanto durar o estoque. Clique no botão abaixo para garantir o seu.');
   const [ctaLabel, setCtaLabel] = useState('Ver Oferta Agora');
@@ -95,7 +95,7 @@ const PromoNotificationModal: React.FC<Props> = ({ onClose }) => {
 <body>
   <div class="wrap">
     <div class="header">
-      <h1>🌸 Japan Express</h1>
+      <h1>🌸 Nikkey Box</h1>
       <p>Produtos importados direto do Japão</p>
     </div>
     <div class="body">
@@ -121,7 +121,7 @@ const PromoNotificationModal: React.FC<Props> = ({ onClose }) => {
       <a class="cta" href="${productUrl}">${ctaLabel}</a>
     </div>
     <div class="footer">
-      Japan Express · <a href="${STORE_URL}">japanexpress-store.com</a><br>
+      Nikkey Box · <a href="${STORE_URL}">nikkeybox.com.br</a><br>
       <span style="font-size:11px;margin-top:6px;display:inline-block">Você está recebendo este e-mail por estar cadastrado em nossa loja.</span>
     </div>
   </div>

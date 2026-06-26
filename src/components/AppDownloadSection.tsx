@@ -39,7 +39,7 @@ const AndroidGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
               step: 3,
               icon: <Check className="w-4 h-4 text-green-500" />,
               title: 'Toque em "Instalar"',
-              desc: 'O ícone Japan Express aparece na tela inicial 🎉',
+              desc: 'O ícone Nikkey Box aparece na tela inicial 🎉',
             },
           ].map(({ step, icon, title, desc }) => (
             <div key={step} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
@@ -73,7 +73,7 @@ const AndroidGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
 const IOSGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
   <div className="fixed inset-0 z-[9999] bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-4 animate-in fade-in duration-200">
     <div className="w-full max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden">
-      <div className="h-1.5 bg-gradient-to-r from-pink-400 to-pink-500" />
+      <div className="h-1.5 bg-gradient-to-r from-violet-400 to-violet-600" />
       <div className="p-5">
         <div className="flex items-center justify-between mb-5">
           <div className="flex items-center gap-3">
@@ -98,7 +98,7 @@ const IOSGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
             },
             {
               step: 2,
-              icon: <Plus className="w-4 h-4 text-pink-500" />,
+              icon: <Plus className="w-4 h-4 text-purple-500" />,
               title: '"Adicionar à Tela de Início"',
               desc: 'Role o menu e toque nesta opção',
             },
@@ -106,7 +106,7 @@ const IOSGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
               step: 3,
               icon: <Check className="w-4 h-4 text-green-500" />,
               title: 'Toque em "Adicionar"',
-              desc: 'O ícone Japan Express aparece na tela inicial 🎉',
+              desc: 'O ícone Nikkey Box aparece na tela inicial 🎉',
             },
           ].map(({ step, icon, title, desc }) => (
             <div key={step} className="flex items-start gap-3 p-3 bg-gray-50 rounded-xl">
@@ -127,7 +127,7 @@ const IOSGuide: React.FC<{ onClose: () => void }> = ({ onClose }) => (
 
         <button
           onClick={onClose}
-          className="w-full mt-4 py-2.5 rounded-xl bg-pink-500 hover:bg-pink-600 text-white font-bold text-sm transition-colors"
+          className="w-full mt-4 py-2.5 rounded-xl bg-purple-500 hover:bg-violet-700 text-white font-bold text-sm transition-colors"
         >
           Entendido!
         </button>
@@ -157,13 +157,13 @@ const AppDownloadSection: React.FC = () => {
     return (
       <section className="py-12 bg-gradient-to-br from-orange-50 to-pink-50">
         <div className="container mx-auto px-4 text-center">
-          <div className="inline-flex items-center gap-3 bg-white rounded-2xl px-8 py-5 shadow-md border border-pink-100">
+          <div className="inline-flex items-center gap-3 bg-white rounded-2xl px-8 py-5 shadow-md border border-purple-100">
             <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center">
               <Check className="w-6 h-6 text-green-600" />
             </div>
             <div className="text-left">
               <p className="font-bold text-gray-900">App instalado com sucesso!</p>
-              <p className="text-sm text-gray-500">Japan Express está na sua tela inicial 🎌</p>
+              <p className="text-sm text-gray-500">Nikkey Box está na sua tela inicial 🎌</p>
             </div>
           </div>
         </div>
@@ -179,8 +179,8 @@ const AppDownloadSection: React.FC = () => {
       <section className="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
         {/* Decoração de fundo */}
         <div className="absolute inset-0 opacity-10 pointer-events-none select-none">
-          <div className="absolute -top-10 -right-10 w-64 h-64 rounded-full bg-pink-400 blur-3xl" />
-          <div className="absolute -bottom-10 -left-10 w-64 h-64 rounded-full bg-pink-400 blur-3xl" />
+          <div className="absolute -top-10 -right-10 w-64 h-64 rounded-full bg-violet-400 blur-3xl" />
+          <div className="absolute -bottom-10 -left-10 w-64 h-64 rounded-full bg-violet-400 blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 relative">
@@ -188,19 +188,19 @@ const AppDownloadSection: React.FC = () => {
 
             {/* Texto */}
             <div className="text-white">
-              <div className="inline-flex items-center gap-2 bg-pink-500/20 border border-pink-500/30 text-pink-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 uppercase tracking-widest">
+              <div className="inline-flex items-center gap-2 bg-purple-500/20 border border-violet-500/30 text-purple-300 text-xs font-bold px-3 py-1.5 rounded-full mb-5 uppercase tracking-widest">
                 <Smartphone className="w-3.5 h-3.5" /> App Gratuito
               </div>
 
               <h2 className="font-display text-3xl lg:text-4xl font-black text-white leading-tight mb-4">
                 Leve o Japão<br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-pink-400">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-violet-400">
                   no seu bolso
                 </span>
               </h2>
 
               <p className="text-gray-300 text-base leading-relaxed mb-8">
-                Instale o Japan Express direto na sua tela inicial — sem App Store, sem Play Store.
+                Instale o Nikkey Box direto na sua tela inicial — sem App Store, sem Play Store.
                 Acesse produtos, rastreie pedidos e faça compras em segundos.
               </p>
 
@@ -276,9 +276,9 @@ const AppDownloadSection: React.FC = () => {
                       <img src="/logo.jpg" alt="" className="w-7 h-7 rounded-full" />
                       <div>
                         <p className="text-[9px] font-black text-gray-900 leading-none">Japan</p>
-                        <p className="text-[7px] bg-pink-500 text-white px-1 rounded font-bold leading-tight">Express</p>
+                        <p className="text-[7px] bg-purple-500 text-white px-1 rounded font-bold leading-tight">Express</p>
                       </div>
-                      <div className="ml-auto w-5 h-5 bg-pink-100 rounded-full flex items-center justify-center">
+                      <div className="ml-auto w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center">
                         <span className="text-[8px]">🛒</span>
                       </div>
                     </div>
@@ -287,12 +287,12 @@ const AppDownloadSection: React.FC = () => {
                       {['🧴 Cosméticos', '🍵 Doces & Chás', '📚 Papelaria', '🎮 Acessórios'].map((cat) => (
                         <div key={cat} className="bg-white rounded-lg px-2 py-1.5 shadow-sm border border-gray-100 flex items-center justify-between">
                           <span className="text-[9px] font-semibold text-gray-700">{cat}</span>
-                          <div className="w-12 h-1.5 bg-pink-200 rounded-full" />
+                          <div className="w-12 h-1.5 bg-purple-200 rounded-full" />
                         </div>
                       ))}
                     </div>
                     {/* Banner promo simulado */}
-                    <div className="mx-2 mt-1 bg-gradient-to-r from-pink-400 to-pink-400 rounded-lg p-2">
+                    <div className="mx-2 mt-1 bg-gradient-to-r from-violet-400 to-violet-400 rounded-lg p-2">
                       <p className="text-white text-[9px] font-black">🌸 NOVO PRODUTO</p>
                       <p className="text-white/80 text-[8px]">Do Japão para você</p>
                     </div>
@@ -302,7 +302,7 @@ const AppDownloadSection: React.FC = () => {
                 <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-40 h-6 bg-black/20 blur-xl rounded-full" />
                 {/* Ícone na tela inicial simulado */}
                 <div className="absolute -right-6 -top-4 bg-white rounded-2xl shadow-xl p-2 border border-gray-100">
-                  <img src="/icons/icon-72x72.png" alt="Japan Express" className="w-12 h-12 rounded-xl" />
+                  <img src="/icons/icon-72x72.png" alt="Nikkey Box" className="w-12 h-12 rounded-xl" />
                   <p className="text-[8px] text-center text-gray-600 font-medium mt-1 leading-none">Japan<br/>Express</p>
                 </div>
               </div>

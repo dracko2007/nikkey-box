@@ -31,7 +31,7 @@ const C: Record<Lang, {
     s2: [
       'Em caso de desistência do produto, o frete de devolução é por conta do cliente.',
       'O envio de retorno deve ser feito com rastreamento, para garantir a comprovação da devolução.',
-      'A Japan Express não se responsabiliza por extravios ou danos durante o transporte de retorno.',
+      'A Nikkey Box não se responsabiliza por extravios ou danos durante o transporte de retorno.',
     ],
     s3Title: '3. Processo de reembolso',
     s3: [
@@ -69,7 +69,7 @@ const C: Record<Lang, {
     s2: [
       'In case of withdrawal, return shipping is the customer’s responsibility.',
       'The return must be shipped with tracking to ensure proof of the return.',
-      'Japan Express is not responsible for loss or damage during the return transport.',
+      'Nikkey Box is not responsible for loss or damage during the return transport.',
     ],
     s3Title: '3. Refund process',
     s3: [
@@ -107,7 +107,7 @@ const C: Record<Lang, {
     s2: [
       'お客様都合による返品の場合、返送料はお客様のご負担となります。',
       '返送は追跡付きで行い、返品の証明ができるようにしてください。',
-      'Japan Express は返送中の紛失・破損について責任を負いません。',
+      'Nikkey Box は返送中の紛失・破損について責任を負いません。',
     ],
     s3Title: '3. 返金の手続き',
     s3: [
@@ -200,8 +200,8 @@ const ReturnPolicy: React.FC = () => {
               </h2>
               <p>
                 {c.s6Pre}<strong>070-1367-1679</strong>{c.s6Or}
-                <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">
-                  contato@japanexpress-store.com
+                <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">
+                  contato@nikkeybox.com.br
                 </a>
                 {c.s6Post}
               </p>

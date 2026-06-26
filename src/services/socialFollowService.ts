@@ -7,7 +7,7 @@ export type SocialNetwork = 'instagram' | 'facebook' | 'tiktok' | 'x';
 export const SOCIAL_POINTS = 500;
 
 export const SOCIAL_CONFIG: Record<SocialNetwork, { label: string; url: string; color: string }> = {
-  instagram: { label: 'Instagram', url: 'https://www.instagram.com/japan_express_oficial/', color: 'bg-pink-500' },
+  instagram: { label: 'Instagram', url: 'https://www.instagram.com/japan_express_oficial/', color: 'bg-purple-500' },
   facebook:  { label: 'Facebook',  url: 'https://www.facebook.com/japanexpress.br',         color: 'bg-blue-600' },
   tiktok:    { label: 'TikTok',    url: 'https://www.tiktok.com/@japan_express_oficial',     color: 'bg-gray-900' },
   x:         { label: 'X (Twitter)', url: 'https://x.com/japanexpress_br',                  color: 'bg-black' },

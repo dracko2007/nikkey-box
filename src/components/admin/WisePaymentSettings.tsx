@@ -26,7 +26,7 @@ const WisePaymentSettings: React.FC = () => {
         wiseLink: settings.wiseLink.trim(),
         wiseEnabled: settings.wiseEnabled && !!settings.wiseLink.trim(),
         pixKey: settings.pixKey.trim(),
-        pixReceiverName: settings.pixReceiverName.trim() || 'Japan Express',
+        pixReceiverName: settings.pixReceiverName.trim() || 'Nikkey Box',
         pixCity: settings.pixCity.trim() || 'Sao Paulo',
         yuchoKigo: settings.yuchoKigo.trim(),
         yuchoNumber: settings.yuchoNumber.trim(),

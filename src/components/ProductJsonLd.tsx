@@ -12,7 +12,7 @@ interface Props {
   rating?: { averageRating: number; totalReviews: number };
 }
 
-const SITE_URL = 'https://www.japanexpress-store.com';
+const SITE_URL = 'https://www.nikkeybox.com.br';
 
 /**
  * Injeta Schema.org Product/Offer com shippingDetails no <head>.
@@ -41,7 +41,7 @@ const ProductJsonLd: React.FC<Props> = ({ product, country, rating }) => {
       name: product.name,
       image: image ? [image] : undefined,
       description: (product.description || product.name).slice(0, 5000),
-      brand: { '@type': 'Brand', name: 'Japan Express' },
+      brand: { '@type': 'Brand', name: 'Nikkey Box' },
       sku: product.id,
       offers: {
         '@type': 'Offer',

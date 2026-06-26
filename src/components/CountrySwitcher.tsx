@@ -20,7 +20,7 @@ const CountrySwitcher: React.FC = () => {
       code: c.name,
       flagCode: c.iso,
       label: c.name,
-      details: c.name === 'Japão' ? 'Japan Express (Local)' : 'Japan Express (Aéreo)',
+      details: c.name === 'Japão' ? 'Nikkey Box (Local)' : 'Nikkey Box (Aéreo)',
     }));
 
   // Close dropdown on click outside

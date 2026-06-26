@@ -64,7 +64,7 @@ const getPayments = (lang: string) => {
       steps: [
         'At checkout, choose PayPay.',
         'Open the PayPay app and tap "Scan".',
-        'Scan the Japan Express QR Code.',
+        'Scan the Nikkey Box QR Code.',
         'Enter the exact amount and confirm payment.',
       ],
     },
@@ -96,7 +96,7 @@ const getPayments = (lang: string) => {
       steps: [
         'チェックアウトでPayPayを選択。',
         'PayPayアプリを開いて「スキャン」をタップ。',
-        'Japan ExpressのQRコードをスキャン。',
+        'Nikkey BoxのQRコードをスキャン。',
         '正確な金額を入力して支払いを確認。',
       ],
     },
@@ -128,7 +128,7 @@ const getPayments = (lang: string) => {
       steps: [
         'No checkout, escolha PayPay.',
         'Abra o app PayPay e toque em "Scan".',
-        'Escaneie o QR Code da Japan Express.',
+        'Escaneie o QR Code da Nikkey Box.',
         'Digite o valor exato e confirme o pagamento.',
       ],
     },

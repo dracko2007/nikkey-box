@@ -71,7 +71,7 @@ const OrderReview: React.FC = () => {
   });
   const [paySettings, setPaySettings] = useState<import('@/services/paymentSettingsService').PaymentSettings>({
     wiseLink: '', wiseEnabled: false,
-    pixKey: '', pixReceiverName: 'Japan Express', pixCity: 'Sao Paulo',
+    pixKey: '', pixReceiverName: 'Nikkey Box', pixCity: 'Sao Paulo',
     yuchoKigo: '', yuchoNumber: '', yuchoName: '', contactPhone: '',
   });
 
@@ -780,7 +780,7 @@ const OrderReview: React.FC = () => {
                   )}
 
                   {pixDiscount > 0 && (
-                    <div className="flex justify-between text-pink-600 font-bold bg-pink-50 p-2 rounded border border-dashed border-pink-200">
+                    <div className="flex justify-between text-violet-700 font-bold bg-purple-50 p-2 rounded border border-dashed border-purple-200">
                       <span>Desconto Extra de 5% (Pagamento via PIX)</span>
                       <span>-{formatPrice(pixDiscount, 'BRL')}</span>
                     </div>
@@ -795,12 +795,12 @@ const OrderReview: React.FC = () => {
 
                   {/* Estimated international taxes (shown only as reminder, not summed) */}
                   {formData.country !== 'Japão' && estimatedTax > 0 && (
-                    <div className="bg-pink-50/50 dark:bg-pink-950/10 border border-pink-200/60 rounded-xl p-3 space-y-2 mt-2">
-                      <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-pink-300">
+                    <div className="bg-purple-50/50 dark:bg-purple-950/10 border border-purple-200/60 rounded-xl p-3 space-y-2 mt-2">
+                      <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-purple-300">
                         <span>{taxLabel}</span>
                         <span>{formatPrice(estimatedTax, currency)}</span>
                       </div>
-                      <p className="text-[10px] text-pink-700 dark:text-pink-400 leading-relaxed font-semibold">
+                      <p className="text-[10px] text-violet-800 dark:text-purple-400 leading-relaxed font-semibold">
                         ⚠️ <strong>Nota:</strong> Este imposto é aproximado e poderá ser cobrado pela alfândega local na chegada do pacote no país de destino. Ele <strong>NÃO</strong> foi adicionado ao total geral cobrado no site.
                       </p>
                     </div>
@@ -832,23 +832,23 @@ const OrderReview: React.FC = () => {
                   )}
 
                   {isPix && (
-                    <div className="bg-pink-50 border border-pink-200 rounded-xl p-3 space-y-1.5 mt-1">
-                      <p className="text-[10px] text-pink-600 font-semibold mb-1">
+                    <div className="bg-purple-50 border border-purple-200 rounded-xl p-3 space-y-1.5 mt-1">
+                      <p className="text-[10px] text-violet-700 font-semibold mb-1">
                         Taxas aplicadas por pagamento via PIX (remessa internacional)
                       </p>
-                      <div className="flex justify-between text-xs text-gray-500 border-b border-pink-100 pb-1.5">
+                      <div className="flex justify-between text-xs text-gray-500 border-b border-purple-100 pb-1.5">
                         <span>Subtotal (antes das taxas PIX)</span>
                         <span>{formatPrice(grandTotal, currency)}</span>
                       </div>
-                      <div className="flex justify-between text-xs text-pink-700">
+                      <div className="flex justify-between text-xs text-violet-800">
                         <span>+ IOF (3,5% sobre o subtotal)</span>
                         <span>+ {formatPrice(pixIofFee, currency)}</span>
                       </div>
-                      <div className="flex justify-between text-xs text-pink-700">
+                      <div className="flex justify-between text-xs text-violet-800">
                         <span>+ Taxa bancária de remessa (fixa)</span>
                         <span>+ R$ 32</span>
                       </div>
-                      <div className="flex justify-between text-xs font-bold text-orange-900 bg-pink-100 rounded px-1.5 py-1 mt-0.5">
+                      <div className="flex justify-between text-xs font-bold text-orange-900 bg-purple-100 rounded px-1.5 py-1 mt-0.5">
                         <span>= Total com taxas PIX</span>
                         <span>{formatPrice(finalGrandTotal, currency)}</span>
                       </div>
@@ -857,7 +857,7 @@ const OrderReview: React.FC = () => {
 
                   <div className="flex justify-between pt-3 border-t border-border font-black text-lg">
                     <span>Total Geral</span>
-                    <span className="text-2xl text-pink-600">
+                    <span className="text-2xl text-violet-700">
                       {formatPrice(finalGrandTotal, currency)}
                     </span>
                   </div>
@@ -885,7 +885,7 @@ const OrderReview: React.FC = () => {
                  {!isJapan && (
                    <div>
                      <Label className="text-muted-foreground font-semibold">CPF (Desembaraço Aduaneiro)</Label>
-                     <p className="font-bold text-pink-600 text-base">{formData.cpf}</p>
+                     <p className="font-bold text-violet-700 text-base">{formData.cpf}</p>
                    </div>
                  )}
 
@@ -965,7 +965,7 @@ const OrderReview: React.FC = () => {
                       {/* PayPay Option for Japan */}
                       <div className={cn(
                         "flex items-start space-x-3 p-4 rounded-xl border-2 transition-all cursor-pointer",
-                        paymentMethod === 'paypay' ? "border-pink-500 bg-pink-50/50" : "border-border hover:border-gray-300"
+                        paymentMethod === 'paypay' ? "border-violet-500 bg-purple-50/50" : "border-border hover:border-gray-300"
                       )}>
                         <RadioGroupItem value="paypay" id="paypay" className="mt-1" />
                         <Label htmlFor="paypay" className="flex-1 cursor-pointer">
@@ -982,7 +982,7 @@ const OrderReview: React.FC = () => {
                       {/* Bank Transfer Option for Japan */}
                       <div className={cn(
                         "flex items-start space-x-3 p-4 rounded-xl border-2 transition-all cursor-pointer",
-                        paymentMethod === 'yucho' ? "border-pink-500 bg-pink-50/50" : "border-border hover:border-gray-300"
+                        paymentMethod === 'yucho' ? "border-violet-500 bg-purple-50/50" : "border-border hover:border-gray-300"
                       )}>
                         <RadioGroupItem value="yucho" id="yucho" className="mt-1" />
                         <Label htmlFor="yucho" className="flex-1 cursor-pointer">
@@ -1001,12 +1001,12 @@ const OrderReview: React.FC = () => {
                       {/* PIX Option */}
                       <div className={cn(
                         "flex items-start space-x-3 p-4 rounded-xl border-2 transition-all cursor-pointer",
-                        isPix ? "border-pink-500 bg-pink-50/50" : "border-border hover:border-gray-300"
+                        isPix ? "border-violet-500 bg-purple-50/50" : "border-border hover:border-gray-300"
                       )}>
                         <RadioGroupItem value="pix" id="pix" className="mt-1" />
                         <Label htmlFor="pix" className="flex-1 cursor-pointer">
                           <div className="flex items-center gap-2 mb-1">
-                            <Smartphone className="w-5 h-5 text-pink-500" />
+                            <Smartphone className="w-5 h-5 text-purple-500" />
                             <span className="font-bold text-base text-gray-800">PIX</span>
                           </div>
                           <p className="text-xs text-muted-foreground leading-relaxed">
@@ -1138,7 +1138,7 @@ const OrderReview: React.FC = () => {
                       )}
 
                       {estimatedTax > 0 && (
-                        <p className="text-[10px] text-pink-600 bg-pink-50 rounded px-2 py-1 leading-snug">
+                        <p className="text-[10px] text-violet-700 bg-purple-50 rounded px-2 py-1 leading-snug">
                           ⚠️ {taxLabel} ~{formatPrice(estimatedTax, currency)} (cobrado pela alfândega, NÃO incluso)
                         </p>
                       )}
@@ -1147,21 +1147,21 @@ const OrderReview: React.FC = () => {
                     <div className="border-t border-border mt-4 pt-4">
                       {/* PIX block */}
                       {isPix && (
-                        <div className="bg-pink-50 border border-pink-200 rounded-xl p-3 mb-3 space-y-1.5">
-                          <p className="text-[10px] font-bold text-pink-700 uppercase tracking-wide">Pagamento via PIX</p>
-                          <div className="flex justify-between text-xs text-pink-700">
+                        <div className="bg-purple-50 border border-purple-200 rounded-xl p-3 mb-3 space-y-1.5">
+                          <p className="text-[10px] font-bold text-violet-800 uppercase tracking-wide">Pagamento via PIX</p>
+                          <div className="flex justify-between text-xs text-violet-800">
                             <span>Subtotal</span>
                             <span>{formatPrice(grandTotal, currency)}</span>
                           </div>
-                          <div className="flex justify-between text-xs text-pink-700">
+                          <div className="flex justify-between text-xs text-violet-800">
                             <span>+ IOF (3,5%)</span>
                             <span>+ {formatPrice(pixIofFee, currency)}</span>
                           </div>
-                          <div className="flex justify-between text-xs text-pink-700">
+                          <div className="flex justify-between text-xs text-violet-800">
                             <span>+ Taxa bancária</span>
                             <span>+ R$ 32</span>
                           </div>
-                          <div className="flex justify-between text-xs font-bold text-orange-900 border-t border-pink-200 pt-1 mt-1">
+                          <div className="flex justify-between text-xs font-bold text-orange-900 border-t border-purple-200 pt-1 mt-1">
                             <span>Total PIX</span>
                             <span className="text-base">{formatPrice(finalGrandTotal, currency)}</span>
                           </div>
@@ -1190,7 +1190,7 @@ const OrderReview: React.FC = () => {
                       {!isPix && paymentMethod !== 'wise' && (
                         <div className="flex justify-between font-black text-xl mb-3">
                           <span>Total</span>
-                          <span className="text-pink-600">{formatPrice(finalGrandTotal, currency)}</span>
+                          <span className="text-violet-700">{formatPrice(finalGrandTotal, currency)}</span>
                         </div>
                       )}
 
@@ -1198,7 +1198,7 @@ const OrderReview: React.FC = () => {
                       {(isPix || paymentMethod === 'wise') && (
                         <div className="flex justify-between font-black text-base text-muted-foreground mb-3">
                           <span>Total Geral</span>
-                          <span className="text-pink-600 text-xl">{formatPrice(finalGrandTotal, currency)}</span>
+                          <span className="text-violet-700 text-xl">{formatPrice(finalGrandTotal, currency)}</span>
                         </div>
                       )}
 
@@ -1280,7 +1280,7 @@ const OrderReview: React.FC = () => {
                 {/* PIX */}
                 {pendingOrder.paymentMethod === 'pix' && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-base">
+                    <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-base">
                       <Smartphone className="w-5 h-5" /> PAGAMENTO VIA PIX
                     </div>
                     {pixPayload ? (
@@ -1292,7 +1292,7 @@ const OrderReview: React.FC = () => {
                         <div className="flex border border-gray-300 rounded-xl overflow-hidden bg-gray-50 max-w-sm mx-auto">
                           <input readOnly value={pixPayload} className="flex-1 px-3 py-2 text-xs font-mono text-gray-500 bg-transparent select-all outline-none" />
                           <button onClick={() => { navigator.clipboard.writeText(pixPayload); setPixCopied(true); setTimeout(() => setPixCopied(false), 2500); }}
-                            className="bg-pink-500 hover:bg-pink-600 text-white px-4 flex items-center gap-1.5 text-xs font-bold transition-colors">
+                            className="bg-purple-500 hover:bg-violet-700 text-white px-4 flex items-center gap-1.5 text-xs font-bold transition-colors">
                             <Copy className="w-3.5 h-3.5" />{pixCopied ? 'Copiado!' : 'Copiar'}
                           </button>
                         </div>
@@ -1315,7 +1315,7 @@ const OrderReview: React.FC = () => {
                 {/* PayPay */}
                 {pendingOrder.paymentMethod === 'paypay' && (
                   <div className="space-y-4">
-                    <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-base">
+                    <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-base">
                       <Smartphone className="w-5 h-5 animate-pulse" /> PAGAMENTO VIA PAYPAY
                     </div>
                     <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 inline-block">
@@ -1324,7 +1324,7 @@ const OrderReview: React.FC = () => {
                         onError={(e) => { e.currentTarget.src = 'https://placehold.co/200x200/red/white?text=PayPay+QR'; }} />
                     </div>
                     <div className="bg-gray-100 p-3 rounded-xl text-xs font-mono text-left max-w-xs mx-auto space-y-1">
-                      <p><strong>Enviar para:</strong> Japan Express</p>
+                      <p><strong>Enviar para:</strong> Nikkey Box</p>
                       {paySettings.contactPhone && <p><strong>Telefone:</strong> {paySettings.contactPhone}</p>}
                       <p><strong>Valor:</strong> {formatPrice(pendingOrder.total, 'JPY')}</p>
                     </div>
@@ -1337,7 +1337,7 @@ const OrderReview: React.FC = () => {
                 {/* Yucho */}
                 {pendingOrder.paymentMethod === 'yucho' && (
                   <div className="space-y-3">
-                    <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-base">
+                    <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-base">
                       <Landmark className="w-5 h-5" /> DEPÓSITO BANCÁRIO (YUCHO)
                     </div>
                     <div className="bg-gray-50 border border-gray-200 rounded-xl p-4 font-mono text-xs text-left space-y-2 max-w-xs mx-auto">

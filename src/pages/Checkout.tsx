@@ -632,7 +632,7 @@ const Checkout: React.FC = () => {
                 </p>
               )}
               {negModalType === 'shipping' && (
-                <p className="text-xs text-pink-500 font-medium">
+                <p className="text-xs text-purple-500 font-medium">
                   Desconto no frete requer aprovação manual da vendedora.
                 </p>
               )}
@@ -1006,12 +1006,12 @@ const Checkout: React.FC = () => {
 
                   <div className="pt-4 border-t border-border">
                     {negIsPending ? (
-                      <div className="w-full rounded-xl border-2 border-dashed border-pink-300 bg-pink-50 dark:bg-pink-950/20 p-4 text-center space-y-1">
-                        <div className="flex items-center justify-center gap-2 text-pink-600 font-bold">
+                      <div className="w-full rounded-xl border-2 border-dashed border-purple-300 bg-purple-50 dark:bg-purple-950/20 p-4 text-center space-y-1">
+                        <div className="flex items-center justify-center gap-2 text-violet-700 font-bold">
                           <Hourglass className="w-4 h-4 animate-pulse" />
                           Aguardando resposta da vendedora
                         </div>
-                        <p className="text-xs text-pink-500">
+                        <p className="text-xs text-purple-500">
                           Expira em 24h · Acompanhe em Perfil → Negociações
                         </p>
                       </div>
@@ -1164,12 +1164,12 @@ const Checkout: React.FC = () => {
 
                     {/* Tax displays only as estimated warnings in sidebar */}
                     {formData.country !== 'Japão' && estimatedTax > 0 && (
-                      <div className="bg-pink-50/50 dark:bg-pink-950/10 border border-pink-200/60 rounded-xl p-3 space-y-2 mt-2">
-                        <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-pink-300">
+                      <div className="bg-purple-50/50 dark:bg-purple-950/10 border border-purple-200/60 rounded-xl p-3 space-y-2 mt-2">
+                        <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-purple-300">
                           <span>{taxLabel}</span>
                           <span>{formatPrice(estimatedTax, currency)}</span>
                         </div>
-                        <p className="text-[10px] text-pink-700 dark:text-pink-400 leading-relaxed font-semibold">
+                        <p className="text-[10px] text-violet-800 dark:text-purple-400 leading-relaxed font-semibold">
                           ⚠️ <strong>Lembrete:</strong> Este imposto é estimado e poderá ser cobrado pela alfândega na chegada ao país. Ele <strong>NÃO</strong> está incluído no total cobrado no site.
                         </p>
                       </div>
@@ -1235,7 +1235,7 @@ const Checkout: React.FC = () => {
                             </span>
                           )}
                           {negIsPending && activeNeg?.type === 'ps_fee' && (
-                            <span className="text-[10px] text-pink-500 font-bold flex items-center gap-0.5">
+                            <span className="text-[10px] text-purple-500 font-bold flex items-center gap-0.5">
                               <Hourglass className="w-3 h-3" /> Aguardando
                             </span>
                           )}
@@ -1280,7 +1280,7 @@ const Checkout: React.FC = () => {
                             {formatPrice(baseTotalPrice + rawShippingCost + psFeeOriginalDisplay, currency)}
                           </p>
                         )}
-                        <span className="text-base text-pink-600">
+                        <span className="text-base text-violet-700">
                           {formatPrice(grandTotal, currency)}
                         </span>
                         {(couponDiscount + pointsDiscount + convertYen(effectivePsFeeDiscountYen) + shippingDiscountDisplay) > 0 && (

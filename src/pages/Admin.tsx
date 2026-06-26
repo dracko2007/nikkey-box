@@ -305,7 +305,7 @@ const Admin: React.FC = () => {
             </head>
             <body style="font-family: Arial, sans-serif; padding: 20px;">
               <h1 style="color: #22c55e;">🧪 Test Email (Resend)</h1>
-              <p>This is a test email from Japan Express!</p>
+              <p>This is a test email from Nikkey Box!</p>
               <p>If you received this, your email configuration is working correctly! ✅</p>
               <p>Time: ${new Date().toLocaleString('pt-BR')}</p>
             </body>
@@ -314,7 +314,7 @@ const Admin: React.FC = () => {
         
         emailResult = await emailService.sendOrderConfirmation({
           to: ADMIN_EMAIL,
-          subject: '🧪 Test Email (Resend) - Japan Express',
+          subject: '🧪 Test Email (Resend) - Nikkey Box',
           html: testEmailHTML,
           orderNumber: 'TEST-' + Date.now(),
           customerName: 'Test User'
@@ -350,7 +350,7 @@ const Admin: React.FC = () => {
       const testMessage = `
 🧪 *Test Message*
 
-This is a test message from Japan Express!
+This is a test message from Nikkey Box!
 
 If you received this, your WhatsApp configuration is working correctly! ✅
 
@@ -544,7 +544,7 @@ _This is an automated test message_
   </div>
 
   <div class="footer">
-    Japan Express · www.japanexpress-store.com · Impresso em ${new Date().toLocaleString('pt-BR')}
+    Nikkey Box · www.nikkeybox.com.br · Impresso em ${new Date().toLocaleString('pt-BR')}
   </div>
 </body>
 </html>`;

@@ -7,7 +7,7 @@ const WHATSAPP_NUMBER = '817013671679'; // +81 70-1367-1679
 const TIKTOK_URL = 'https://www.tiktok.com/@japan_express_oficial';
 const X_URL = 'https://x.com/japanexpress_br';
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}`;
-const CONTACT_EMAIL = 'contato@japanexpress-store.com';
+const CONTACT_EMAIL = 'contato@nikkeybox.com.br';
 import { useLanguage } from '@/context/LanguageContext';
 import JapanExpressLogo from '@/components/JapanExpressLogo';
 
@@ -28,11 +28,12 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <div className="flex items-center gap-2.5 mb-4">
-              <JapanExpressLogo size={56} />
-              <div className="flex flex-col leading-tight">
-                <span className="font-display text-lg font-bold tracking-tight">Japan</span>
-                <span className="font-display font-extrabold text-sm bg-white/15 border border-white/30 px-1.5 py-0.5 rounded-lg">Express</span>
+            <div className="flex items-center gap-2 mb-4">
+              <img src="/nikkey-box-logo.png" alt="Nikkey Box" className="h-12 w-auto object-contain"
+                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+              <div className="flex items-baseline gap-0.5">
+                <span className="font-display text-lg font-black text-white tracking-tight">NIKKEY</span>
+                <span className="font-display text-lg font-bold" style={{color:'#E8B4C8'}}>box</span>
               </div>
             </div>
             <p className="text-accent-foreground/80 text-sm leading-relaxed max-w-md">
@@ -122,7 +123,7 @@ const Footer: React.FC = () => {
                 <li className="pt-1">
                   <button
                     onClick={handleInstallClick}
-                    className="flex items-center gap-1.5 text-sm text-pink-300 hover:text-pink-200 font-semibold transition-colors"
+                    className="flex items-center gap-1.5 text-sm text-purple-300 hover:text-violet-200 font-semibold transition-colors"
                   >
                     <Smartphone className="w-3.5 h-3.5" />
                     {platform === 'ios' ? t('footer.appInstallIOS') : t('footer.appInstall')}
@@ -170,7 +171,7 @@ const Footer: React.FC = () => {
 
         <div className="border-t border-accent-foreground/10 mt-10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm text-accent-foreground/60">
-            © {new Date().getFullYear()} Japan Express. {t('footer.rights')}
+            © {new Date().getFullYear()} Nikkey Box. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             <Link to="/privacidade" className="text-xs text-accent-foreground/50 hover:text-accent-foreground/80 transition-colors">

@@ -26,12 +26,12 @@ const OrderConfirmation: React.FC = () => {
   const [cardData, setCardData] = useState({ number: '', name: '', expiry: '', cvv: '' });
   const [cardStatus, setCardStatus] = useState<'idle' | 'processing' | 'success'>('idle');
   const [wiseLink, setWiseLink] = useState('');
-  const [pixSettings, setPixSettings] = useState({ pixKey: '', pixReceiverName: 'Japan Express', pixCity: 'Sao Paulo' });
+  const [pixSettings, setPixSettings] = useState({ pixKey: '', pixReceiverName: 'Nikkey Box', pixCity: 'Sao Paulo' });
 
   useEffect(() => {
     paymentSettingsService.get().then((s) => {
       setWiseLink(s.wiseLink || '');
-      setPixSettings({ pixKey: s.pixKey || '', pixReceiverName: s.pixReceiverName || 'Japan Express', pixCity: s.pixCity || 'Sao Paulo' });
+      setPixSettings({ pixKey: s.pixKey || '', pixReceiverName: s.pixReceiverName || 'Nikkey Box', pixCity: s.pixCity || 'Sao Paulo' });
     });
   }, [order]);
 
@@ -111,8 +111,8 @@ const OrderConfirmation: React.FC = () => {
 
             {/* PAYPAY SCREEN */}
             {order.paymentMethod === 'paypay' && (
-              <div className="bg-white rounded-3xl border-2 border-pink-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4 animate-fade-in">
-                <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-lg">
+              <div className="bg-white rounded-3xl border-2 border-violet-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4 animate-fade-in">
+                <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-lg">
                   <Smartphone className="w-6 h-6 animate-pulse" />
                   <span>{t('order.payAreaPayPay')}</span>
                 </div>
@@ -125,7 +125,7 @@ const OrderConfirmation: React.FC = () => {
                 <div className="bg-gray-50 border border-gray-200 rounded-2xl p-4 inline-block shadow-sm">
                   <img 
                     src="/products/paypay-qr.png" 
-                    alt="PayPay QR Code - Japan Express" 
+                    alt="PayPay QR Code - Nikkey Box" 
                     className="w-60 h-auto rounded-xl border border-gray-200 mx-auto shadow-md"
                     onError={(e) => {
                       e.currentTarget.src = "https://placehold.co/240x240/red/white?text=PayPay+QR";
@@ -137,7 +137,7 @@ const OrderConfirmation: React.FC = () => {
                 </div>
 
                 <div className="bg-gray-100 p-4 rounded-xl max-w-sm mx-auto text-xs space-y-2 font-mono text-left">
-                  <p><strong className="text-gray-800">{t('order.sendTo')}</strong> Japan Express</p>
+                  <p><strong className="text-gray-800">{t('order.sendTo')}</strong> Nikkey Box</p>
                   <p><strong className="text-gray-800">{t('order.phone')}</strong> 070-1367-1679</p>
                   <p><strong className="text-gray-800">{t('order.value')}</strong> {formatPrice(order.total, 'JPY')}</p>
                 </div>
@@ -150,8 +150,8 @@ const OrderConfirmation: React.FC = () => {
 
             {/* YUCHO SCREEN */}
             {order.paymentMethod === 'yucho' && (
-              <div className="bg-white rounded-3xl border-2 border-pink-500 p-6 mb-8 shadow-md print:hidden space-y-4 animate-fade-in">
-                <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-lg">
+              <div className="bg-white rounded-3xl border-2 border-violet-500 p-6 mb-8 shadow-md print:hidden space-y-4 animate-fade-in">
+                <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-lg">
                   <Landmark className="w-6 h-6" />
                   <span>DEPÓSITO BANCÁRIO (Yucho Bank / ゆうちょ銀行)</span>
                 </div>
@@ -195,8 +195,8 @@ const OrderConfirmation: React.FC = () => {
 
             {/* PIX SCREEN — pagamento manual com confirmação por comprovante */}
             {order.paymentMethod === 'pix' && (
-              <div className="bg-white rounded-3xl border-2 border-pink-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4">
-                <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-lg">
+              <div className="bg-white rounded-3xl border-2 border-violet-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4">
+                <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-lg">
                   <Smartphone className="w-6 h-6" />
                   <span>PAGAMENTO VIA PIX</span>
                 </div>
@@ -223,7 +223,7 @@ const OrderConfirmation: React.FC = () => {
                         />
                         <button
                           onClick={copyToClipboard}
-                          className="bg-pink-500 hover:bg-pink-600 text-white px-4 flex items-center justify-center gap-1.5 transition-all text-xs font-bold"
+                          className="bg-purple-500 hover:bg-violet-700 text-white px-4 flex items-center justify-center gap-1.5 transition-all text-xs font-bold"
                         >
                           <Copy className="w-4 h-4" />
                           {copied ? 'Copiado!' : 'Copiar'}
@@ -231,12 +231,12 @@ const OrderConfirmation: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="bg-pink-50 border border-pink-200 rounded-2xl p-4 max-w-md mx-auto space-y-3 text-left">
-                      <p className="text-sm font-bold text-pink-700 flex items-center gap-2">
+                    <div className="bg-purple-50 border border-purple-200 rounded-2xl p-4 max-w-md mx-auto space-y-3 text-left">
+                      <p className="text-sm font-bold text-violet-800 flex items-center gap-2">
                         <AlertCircle className="w-4 h-4 shrink-0" />
                         Importante: envie o comprovante
                       </p>
-                      <p className="text-xs text-pink-700 leading-relaxed">
+                      <p className="text-xs text-violet-800 leading-relaxed">
                         Depois de pagar, mande o <strong>comprovante</strong> pelo WhatsApp para confirmarmos.
                         Seu pedido fica <strong>Aguardando Pagamento</strong> até a confirmação — aí preparamos o envio.
                       </p>
@@ -266,8 +266,8 @@ const OrderConfirmation: React.FC = () => {
 
             {/* CREDIT CARD SCREEN */}
             {order.paymentMethod === 'card' && (
-              <div className="bg-white rounded-3xl border-2 border-pink-500 p-6 mb-8 shadow-md print:hidden space-y-4">
-                <div className="flex items-center gap-2 text-pink-600 font-extrabold text-lg justify-center">
+              <div className="bg-white rounded-3xl border-2 border-violet-500 p-6 mb-8 shadow-md print:hidden space-y-4">
+                <div className="flex items-center gap-2 text-violet-700 font-extrabold text-lg justify-center">
                   <CreditCard className="w-6 h-6" />
                   <span>PAGAMENTO VIA CARTÃO DE CRÉDITO</span>
                 </div>
@@ -332,7 +332,7 @@ const OrderConfirmation: React.FC = () => {
                     
                     <button
                       type="submit"
-                      className="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95"
+                      className="w-full bg-purple-500 hover:bg-violet-700 text-white font-bold py-3 px-6 rounded-xl transition-all shadow-md active:scale-95"
                     >
                       Pagar R$ {order.total.toFixed(2)}
                     </button>
@@ -341,8 +341,8 @@ const OrderConfirmation: React.FC = () => {
 
                 {cardStatus === 'processing' && (
                   <div className="py-8 text-center space-y-3">
-                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-pink-500 border-t-transparent mx-auto"></div>
-                    <p className="text-sm font-bold text-pink-600">Aprovando transação com a operadora do cartão...</p>
+                    <div className="animate-spin rounded-full h-12 w-12 border-4 border-violet-500 border-t-transparent mx-auto"></div>
+                    <p className="text-sm font-bold text-violet-700">Aprovando transação com a operadora do cartão...</p>
                   </div>
                 )}
 
@@ -362,8 +362,8 @@ const OrderConfirmation: React.FC = () => {
 
             {/* BOLETO SCREEN */}
             {order.paymentMethod === 'boleto' && (
-              <div className="bg-white rounded-3xl border-2 border-pink-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4">
-                <div className="flex items-center justify-center gap-2 text-pink-600 font-extrabold text-lg">
+              <div className="bg-white rounded-3xl border-2 border-violet-500 p-6 mb-8 shadow-md print:hidden text-center space-y-4">
+                <div className="flex items-center justify-center gap-2 text-violet-700 font-extrabold text-lg">
                   <FileText className="w-6 h-6" />
                   <span>EMISSÃO DE BOLETO BANCÁRIO</span>
                 </div>
@@ -434,7 +434,7 @@ const OrderConfirmation: React.FC = () => {
             <div className="bg-card rounded-2xl border border-border p-8 mb-6">
               <div className="text-center mb-6 print:block hidden">
                 <h1 className="font-display text-3xl font-bold mb-2">
-                  Japan Express
+                  Nikkey Box
                 </h1>
                 <p className="text-muted-foreground">
                   {order.currency === 'JPY' ? t('order.receipt.domestic') : t('order.receipt.intl')}
@@ -458,7 +458,7 @@ const OrderConfirmation: React.FC = () => {
 
                 {/* Tracking Details — só aparece quando há código de rastreio */}
                 {order.trackingCode && (
-                <div className="bg-pink-50 border border-pink-200 rounded-xl p-4 flex flex-col md:flex-row justify-between gap-3 text-xs md:text-sm">
+                <div className="bg-purple-50 border border-purple-200 rounded-xl p-4 flex flex-col md:flex-row justify-between gap-3 text-xs md:text-sm">
                   <div>
                     <span className="text-muted-foreground block">
                       {order.currency === 'JPY'
@@ -471,7 +471,7 @@ const OrderConfirmation: React.FC = () => {
                   </div>
                   <div className="text-right">
                     <span className="text-muted-foreground block">{t('order.logisticStatus')}</span>
-                    <span className="bg-pink-600 text-white font-extrabold px-2 py-0.5 rounded text-xs uppercase inline-block mt-1">
+                    <span className="bg-violet-700 text-white font-extrabold px-2 py-0.5 rounded text-xs uppercase inline-block mt-1">
                       {order.status === 'Pago'
                         ? (order.currency === 'JPY' ? t('order.status.preparingDomestic') : t('order.status.waitingDispatch'))
                         : t('order.status.waiting')
@@ -555,19 +555,19 @@ const OrderConfirmation: React.FC = () => {
                   )}
 
                   {order.currency !== 'JPY' && order.pixDiscount > 0 && (
-                    <div className="flex justify-between text-pink-600 font-bold">
+                    <div className="flex justify-between text-violet-700 font-bold">
                       <span>{t('order.pixDiscount')}</span>
                       <span>-{formatPrice(order.pixDiscount, 'BRL')}</span>
                     </div>
                   )}
 
                   {order.currency !== 'JPY' && (order.taxAmount > 0 || order.federalTax > 0) && (
-                    <div className="bg-pink-50/50 dark:bg-pink-950/10 border border-pink-200/60 rounded-xl p-3 space-y-2 mt-2">
-                      <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-pink-300">
+                    <div className="bg-purple-50/50 dark:bg-purple-950/10 border border-purple-200/60 rounded-xl p-3 space-y-2 mt-2">
+                      <div className="flex justify-between text-xs font-bold text-orange-850 dark:text-purple-300">
                         <span>{t('order.tax.estimate')}</span>
                         <span>{formatPrice(order.taxAmount || (order.federalTax + order.icmsTax), order.currency)}</span>
                       </div>
-                      <p className="text-[10px] text-pink-700 dark:text-pink-400 leading-relaxed font-semibold">
+                      <p className="text-[10px] text-violet-800 dark:text-purple-400 leading-relaxed font-semibold">
                         {t('order.tax.note')}
                       </p>
                     </div>
@@ -584,7 +584,7 @@ const OrderConfirmation: React.FC = () => {
 
                   <div className="flex justify-between pt-3 border-t font-black text-base md:text-lg">
                     <span>{t('order.total')}</span>
-                    <span className="text-xl text-pink-600">
+                    <span className="text-xl text-violet-700">
                       {formatPrice(order.total, order.currency || 'BRL')}
                     </span>
                   </div>
@@ -609,7 +609,7 @@ const OrderConfirmation: React.FC = () => {
               <h3 className="font-bold text-sm text-gray-800 uppercase tracking-wider">
                 {order.currency === 'JPY' ? t('order.followTitle.domestic') : t('order.followTitle.intl')}
               </h3>
-              <div className="relative pl-6 border-l border-pink-300 space-y-4 text-xs text-muted-foreground">
+              <div className="relative pl-6 border-l border-purple-300 space-y-4 text-xs text-muted-foreground">
 
                 {order.currency === 'JPY' ? (
                   <>
@@ -620,7 +620,7 @@ const OrderConfirmation: React.FC = () => {
                       { title: t('order.steps.jp4.title'), desc: t('order.steps.jp4.desc'), done: false },
                     ] as const).map((step, i) => (
                       <div key={i} className="relative">
-                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-pink-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
+                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-purple-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
                         <h4 className={`font-bold ${step.done ? 'text-gray-800' : 'text-gray-700'}`}>{step.title}</h4>
                         <p className="mt-0.5">{step.desc}</p>
                       </div>
@@ -635,7 +635,7 @@ const OrderConfirmation: React.FC = () => {
                       { title: t('order.steps.br4.title'), desc: t('order.steps.br4.desc'), done: false },
                     ] as const).map((step, i) => (
                       <div key={i} className="relative">
-                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-pink-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
+                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-purple-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
                         <h4 className={`font-bold ${step.done ? 'text-gray-800' : 'text-gray-700'}`}>{step.title}</h4>
                         <p className="mt-0.5">{step.desc}</p>
                       </div>
@@ -650,7 +650,7 @@ const OrderConfirmation: React.FC = () => {
                       { title: t('order.steps.intl4.title'), desc: t('order.steps.intl4.desc'), done: false },
                     ] as const).map((step, i) => (
                       <div key={i} className="relative">
-                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-pink-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
+                        <div className={`absolute -left-[30px] top-0 w-4 h-4 ${step.done ? 'bg-purple-500' : 'bg-gray-300'} rounded-full border-2 border-white flex items-center justify-center text-white text-[8px]`}>{step.done ? '✓' : i + 1}</div>
                         <h4 className={`font-bold ${step.done ? 'text-gray-800' : 'text-gray-700'}`}>{step.title}</h4>
                         <p className="mt-0.5">{step.desc}</p>
                       </div>

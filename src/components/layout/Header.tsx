@@ -80,12 +80,20 @@ const Header: React.FC = () => {
       )}
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20 gap-4">
-          {/* Logo */}
-          <Link to="/" className="flex items-center gap-1.5 sm:gap-2.5 group shrink-0">
-            <JapanExpressLogo size={56} className="w-11 h-11 sm:w-14 sm:h-14 animate-float drop-shadow-lg group-hover:scale-105 transition-transform shrink-0" />
-            <div className="flex items-baseline gap-1">
-              <span className="font-display text-xl sm:text-2xl lg:text-3xl font-black text-foreground tracking-tight">Japan</span>
-              <span className="font-display text-base sm:text-lg lg:text-2xl font-extrabold text-white bg-gradient-to-r from-primary to-accent shadow-md px-1.5 sm:px-2 py-0.5 rounded-lg transform -rotate-6">Express</span>
+          {/* Logo Nikkey Box */}
+          <Link to="/" className="flex items-center gap-2 group shrink-0">
+            <img
+              src="/nikkey-box-logo.png"
+              alt="Nikkey Box"
+              className="h-12 sm:h-14 w-auto object-contain group-hover:scale-105 transition-transform shrink-0"
+              onError={(e) => {
+                // fallback texto enquanto o logo não estiver no servidor
+                (e.target as HTMLImageElement).style.display = 'none';
+              }}
+            />
+            <div className="flex items-baseline gap-0.5">
+              <span className="font-display text-xl sm:text-2xl font-black tracking-tight" style={{color:'#4A3F8C'}}>NIKKEY</span>
+              <span className="font-display text-xl sm:text-2xl font-bold" style={{color:'#C87090'}}>box</span>
             </div>
           </Link>
 
@@ -166,7 +174,7 @@ const Header: React.FC = () => {
               {isAdmin && (
                 <Link
                   to={isAdminPage ? '/' : '/admin'}
-                  className="flex items-center gap-1.5 px-2 py-1 bg-pink-500/10 border border-pink-300/60 rounded-full text-[11px] font-semibold text-pink-700 dark:text-pink-400 hover:bg-pink-500/20 transition-colors"
+                  className="flex items-center gap-1.5 px-2 py-1 bg-purple-500/10 border border-purple-300/60 rounded-full text-[11px] font-semibold text-violet-800 dark:text-purple-400 hover:bg-purple-500/20 transition-colors"
                 >
                   {isAdminPage
                     ? <><ShoppingCart className="w-3.5 h-3.5" /> Ver Loja</>
@@ -284,7 +292,7 @@ const Header: React.FC = () => {
               <Button
                 asChild
                 variant="ghost"
-                className="w-full justify-start text-base font-medium text-pink-600 hover:text-pink-700"
+                className="w-full justify-start text-base font-medium text-violet-700 hover:text-violet-800"
               >
                 {isAdminPage ? (
                   <Link to="/" onClick={() => setIsMenuOpen(false)}>

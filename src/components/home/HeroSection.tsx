@@ -53,8 +53,8 @@ const HeroSection: React.FC = () => {
     <section className="relative min-h-[85vh] bg-gradient-to-b from-pink-100 via-pink-50/60 to-white overflow-hidden pt-12">
       {/* Background Decorative Blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-pink-200/50 rounded-full blur-3xl" />
-        <div className="absolute -bottom-20 -left-40 w-[600px] h-[600px] bg-pink-100/60 rounded-full blur-3xl" />
+        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] bg-purple-200/50 rounded-full blur-3xl" />
+        <div className="absolute -bottom-20 -left-40 w-[600px] h-[600px] bg-purple-100/60 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 py-12 md:py-20 relative z-10">
@@ -62,14 +62,14 @@ const HeroSection: React.FC = () => {
           
           {/* Left Column: Commercial Pitch */}
           <div className="space-y-6 lg:col-span-7 animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pink-100 text-pink-600 border border-pink-200 text-xs md:text-sm font-extrabold">
-              <span className="w-2.5 h-2.5 bg-pink-600 rounded-full animate-ping" />
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-100 text-violet-700 border border-purple-200 text-xs md:text-sm font-extrabold">
+              <span className="w-2.5 h-2.5 bg-violet-700 rounded-full animate-ping" />
               {t('hero.badge')}
             </div>
             
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-black leading-tight text-gray-900">
               {t('hero.title.1')}{' '}
-              <span className="text-pink-500 font-extrabold relative inline-block">
+              <span className="text-purple-500 font-extrabold relative inline-block">
                 {t('hero.title.highlight')}
                 <span className="absolute left-0 bottom-1 w-full h-2 bg-yellow-400 -z-10 rounded" />
               </span>{' '}
@@ -81,7 +81,7 @@ const HeroSection: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <Button asChild size="lg" className="bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-xl px-8 text-base shadow-md transition-all duration-300 hover:shadow-lg active:scale-95">
+              <Button asChild size="lg" className="bg-purple-500 hover:bg-violet-700 text-white font-bold rounded-xl px-8 text-base shadow-md transition-all duration-300 hover:shadow-lg active:scale-95">
                 <Link to="/produtos">
                   {t('hero.cta.products')}
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -97,14 +97,14 @@ const HeroSection: React.FC = () => {
             {/* Contador de prova social — só aparece após 100 entregas reais */}
             {showCounter && (
               <div className="pt-6 border-t border-gray-100">
-                <div className="flex items-center gap-4 bg-gradient-to-r from-orange-50 to-pink-50 border border-pink-100 rounded-2xl px-5 py-4">
-                  <div className="w-12 h-12 rounded-full bg-pink-500 flex items-center justify-center shrink-0 shadow-md">
+                <div className="flex items-center gap-4 bg-gradient-to-r from-orange-50 to-pink-50 border border-purple-100 rounded-2xl px-5 py-4">
+                  <div className="w-12 h-12 rounded-full bg-purple-500 flex items-center justify-center shrink-0 shadow-md">
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <div className="flex-1">
                     <p className="text-3xl md:text-4xl font-black text-gray-900 leading-none">
                       {orderCount}+
-                      <span className="text-pink-500 text-lg ml-1">✓</span>
+                      <span className="text-purple-500 text-lg ml-1">✓</span>
                     </p>
                     <p className="text-sm font-bold text-gray-600 mt-0.5">entregas realizadas no Brasil</p>
                   </div>
@@ -157,11 +157,11 @@ const HeroSection: React.FC = () => {
             {/* Trust badge 2: Tokyo flight */}
             <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-card p-3.5 border border-gray-100 animate-float" style={{ animationDelay: '2s' }}>
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-pink-100 flex items-center justify-center text-pink-500">
+                <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center text-purple-500">
                   <PlaneTakeoff className="w-5 h-5 animate-pulse" />
                 </div>
                 <div>
-                  <p className="font-extrabold text-[10px] text-pink-500 uppercase tracking-wider">{t('hero.badge.recipe')}</p>
+                  <p className="font-extrabold text-[10px] text-purple-500 uppercase tracking-wider">{t('hero.badge.recipe')}</p>
                   <p className="text-xs font-bold text-gray-800">{t('hero.badge.tradition')}</p>
                 </div>
               </div>

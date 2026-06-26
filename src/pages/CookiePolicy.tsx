@@ -74,7 +74,7 @@ const CookiePolicy: React.FC = () => (
             <h2 className="text-xl font-semibold text-foreground mb-3">Contato</h2>
             <p>Para dúvidas sobre cookies e privacidade:</p>
             <ul className="list-none mt-2 space-y-1">
-              <li>📧 <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">contato@japanexpress-store.com</a></li>
+              <li>📧 <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">contato@nikkeybox.com.br</a></li>
             </ul>
             <p className="mt-3">Veja também nossa <a href="/privacidade" className="text-primary hover:underline">Política de Privacidade</a> e <a href="/termos" className="text-primary hover:underline">Termos de Uso</a>.</p>
           </section>

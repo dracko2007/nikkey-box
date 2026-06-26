@@ -39,7 +39,7 @@ export default function WhatsAppSettings() {
     setSending(true);
     const result = await waServer.sendMessage(
       testPhone.trim(),
-      '🧪 Mensagem de teste do Japan Express! Se você recebeu isto, o WhatsApp está configurado corretamente. ✅'
+      '🧪 Mensagem de teste do Nikkey Box! Se você recebeu isto, o WhatsApp está configurado corretamente. ✅'
     );
     setSending(false);
     if (result.ok) {

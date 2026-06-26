@@ -18,11 +18,11 @@ interface CN23ModalProps {
 }
 
 const DEFAULT_SENDER = {
-  name: 'Paula Shiokawa / Japan Express',
+  name: 'Paula Shiokawa / Nikkey Box',
   address: 'Kirigaoka 5-292, Iga-shi, Mie-ken 518-0225',
   country: 'Japan',
   phone: '+81 70-1367-1679',
-  email: 'contato@japanexpress-store.com',
+  email: 'contato@nikkeybox.com.br',
 };
 
 // Basic JP→EN product category hints

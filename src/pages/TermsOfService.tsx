@@ -13,16 +13,16 @@ const TermsOfService: React.FC = () => (
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">1. Aceitação dos termos</h2>
             <p>
-              Ao acessar ou utilizar o site <strong>japanexpress-store.com</strong>, você concorda com estes
+              Ao acessar ou utilizar o site <strong>nikkeybox.com.br</strong>, você concorda com estes
               Termos de Uso. Se não concordar com qualquer parte, não utilize nosso site.
               Estes termos se aplicam a todos os visitantes, clientes e usuários cadastrados.
             </p>
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-foreground mb-3">2. Sobre a Japan Express</h2>
+            <h2 className="text-xl font-semibold text-foreground mb-3">2. Sobre a Nikkey Box</h2>
             <p>
-              A Japan Express é uma loja especializada em produtos importados do Japão, operando
+              A Nikkey Box é uma loja especializada em produtos importados do Japão, operando
               desde Hiroshima, Japão. Vendemos produtos originais japoneses — cosméticos, doces,
               papelaria, acessórios e outros — com entrega internacional para o Brasil e outros países.
             </p>
@@ -63,7 +63,7 @@ const TermsOfService: React.FC = () => (
             <ul className="list-disc pl-6 space-y-2">
               <li>O frete é calculado com base no peso, dimensões e destino do pedido.</li>
               <li>Prazos de entrega são estimados e podem variar por fatores externos (alfândega, greves, feriados).</li>
-              <li>A Japan Express não se responsabiliza por atrasos causados pela alfândega brasileira ou japonesa.</li>
+              <li>A Nikkey Box não se responsabiliza por atrasos causados pela alfândega brasileira ou japonesa.</li>
               <li>O cliente é responsável por eventuais taxas de importação cobradas pela Receita Federal.</li>
             </ul>
           </section>
@@ -82,7 +82,7 @@ const TermsOfService: React.FC = () => (
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">8. Propriedade intelectual</h2>
             <p>
-              Todo o conteúdo do site (textos, imagens, logotipos, design) é de propriedade da Japan Express
+              Todo o conteúdo do site (textos, imagens, logotipos, design) é de propriedade da Nikkey Box
               ou licenciado por terceiros. É proibida a reprodução ou uso comercial sem autorização prévia por escrito.
             </p>
           </section>
@@ -90,7 +90,7 @@ const TermsOfService: React.FC = () => (
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">9. Limitação de responsabilidade</h2>
             <p>
-              A Japan Express não se responsabiliza por danos indiretos, incidentais ou consequentes decorrentes
+              A Nikkey Box não se responsabiliza por danos indiretos, incidentais ou consequentes decorrentes
               do uso do site. Nossa responsabilidade máxima é limitada ao valor do pedido em questão.
             </p>
           </section>
@@ -106,7 +106,7 @@ const TermsOfService: React.FC = () => (
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">11. Contato</h2>
             <ul className="list-none space-y-1">
-              <li>📧 <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">contato@japanexpress-store.com</a></li>
+              <li>📧 <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">contato@nikkeybox.com.br</a></li>
               <li>💬 WhatsApp: +81 70-1367-1679</li>
             </ul>
           </section>

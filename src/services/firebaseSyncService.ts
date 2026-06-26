@@ -38,7 +38,7 @@ const getEmailActionSettings = () => {
   const origin =
     typeof window !== 'undefined' && window.location?.origin
       ? window.location.origin
-      : 'https://japanexpress-store.com';
+      : 'https://nikkeybox.com.br';
 
   return {
     url: `${origin}/login?verified=1`,

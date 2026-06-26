@@ -13,12 +13,12 @@ const PrivacyPolicy: React.FC = () => (
           <section>
             <h2 className="text-xl font-semibold text-foreground mb-3">1. Quem somos</h2>
             <p>
-              A <strong>Japan Express</strong> é uma loja de importados do Japão, com sede em Hiroshima, Japão.
-              Operamos o site <strong>japanexpress-store.com</strong> e tratamos os dados dos nossos clientes
+              A <strong>Nikkey Box</strong> é uma loja de importados do Japão, com sede em Hiroshima, Japão.
+              Operamos o site <strong>nikkeybox.com.br</strong> e tratamos os dados dos nossos clientes
               com transparência e responsabilidade, em conformidade com a Lei Geral de Proteção de Dados (LGPD —
               Lei nº 13.709/2018).
             </p>
-            <p className="mt-2">Contato do responsável pelos dados: <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">contato@japanexpress-store.com</a></p>
+            <p className="mt-2">Contato do responsável pelos dados: <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">contato@nikkeybox.com.br</a></p>
           </section>
 
           <section>
@@ -74,7 +74,7 @@ const PrivacyPolicy: React.FC = () => (
               <li>Portabilidade dos dados para outro fornecedor.</li>
               <li>Revogação do consentimento para cookies analíticos.</li>
             </ul>
-            <p className="mt-3">Para exercer esses direitos, envie um e-mail para <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">contato@japanexpress-store.com</a>. Responderemos em até 15 dias úteis.</p>
+            <p className="mt-3">Para exercer esses direitos, envie um e-mail para <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">contato@nikkeybox.com.br</a>. Responderemos em até 15 dias úteis.</p>
           </section>
 
           <section>
@@ -101,7 +101,7 @@ const PrivacyPolicy: React.FC = () => (
             <h2 className="text-xl font-semibold text-foreground mb-3">11. Contato</h2>
             <p>Para dúvidas sobre privacidade e proteção de dados:</p>
             <ul className="list-none mt-2 space-y-1">
-              <li>📧 <a href="mailto:contato@japanexpress-store.com" className="text-primary hover:underline">contato@japanexpress-store.com</a></li>
+              <li>📧 <a href="mailto:contato@nikkeybox.com.br" className="text-primary hover:underline">contato@nikkeybox.com.br</a></li>
               <li>💬 WhatsApp: +81 70-1367-1679</li>
               <li>📍 Hiroshima-ken, Japão</li>
             </ul>

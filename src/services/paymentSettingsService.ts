@@ -27,7 +27,7 @@ const DEFAULT: PaymentSettings = {
   wiseLink: '',
   wiseEnabled: false,
   pixKey: '',
-  pixReceiverName: 'Japan Express',
+  pixReceiverName: 'Nikkey Box',
   pixCity: 'Sao Paulo',
   yuchoKigo: '',
   yuchoNumber: '',
