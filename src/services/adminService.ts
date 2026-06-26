@@ -53,10 +53,14 @@ export const adminService = {
       const snap = await getDoc(doc(db, COL, id));
       if (snap.exists()) {
         const d = snap.data() as any;
-        if (d.password === password) return { username: id, name: d.name || identifier, role: d.role };
+        console.log('[admin] sub-admin doc encontrado:', id, 'role:', d.role, 'senhaOk:', d.password === password);
+        if (d.password === password) return { username: id, name: d.name || identifier, role: d.role ?? 1 };
+        console.warn('[admin] senha incorreta para:', id);
+      } else {
+        console.warn('[admin] documento não encontrado para id:', id, '(digitado:', identifier, ')');
       }
     } catch (e) {
-      devWarn('[admin] authenticate falhou:', e);
+      console.error('[admin] authenticate falhou:', e);
     }
     return null;
   },
