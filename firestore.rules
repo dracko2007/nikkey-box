@@ -3,16 +3,19 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Admin verificado pelo UID registrado na coleção /admins — não por email hardcoded.
-    // Fallback: email do super-admin (Firebase Auth) para o primeiro acesso.
     function isAdmin() {
       return request.auth != null && (
         exists(/databases/$(database)/documents/admins/$(request.auth.uid))
-        || request.auth.token.email == 'dracko2007@gmail.com'
       );
     }
 
-    // ---------- Clientes ----------
+    // Produtos — leitura pública, escrita só admin
+    match /products/{productId} {
+      allow read: if true;
+      allow write, delete: if isAdmin();
+    }
+
+    // Clientes / usuários
     match /users/{userId} {
       allow read: if isAdmin() || (request.auth != null && userId == request.auth.uid);
       allow create: if request.auth != null && userId == request.auth.uid;
@@ -20,21 +23,16 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ---------- Pedidos ----------
+    // Pedidos
     match /orders/{orderId} {
       allow read: if isAdmin()
         || (request.auth != null && resource.data.userId == request.auth.uid)
         || (request.auth != null && resource.data.customerEmail == request.auth.token.email);
-
-      // Criação: usuário autenticado OU convidado (customerType == 'guest') com campos mínimos.
       allow create: if (request.auth != null || request.resource.data.get('customerType', '') == 'guest')
         && request.resource.data.status == 'pending'
         && request.resource.data.keys().hasAll(['totalAmount', 'items', 'customerEmail'])
         && request.resource.data.totalAmount > 0
-        && request.resource.data.items.size() > 0
-        && request.resource.data.customerEmail is string
-        && request.resource.data.customerEmail.size() > 3;
-
+        && request.resource.data.items.size() > 0;
       allow update: if isAdmin()
         || (request.auth != null
             && resource.data.customerEmail == request.auth.token.email
@@ -43,125 +41,20 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
-    // ---------- Produtos ----------
-    match /products/{productId} {
-      allow read: if true;
-      allow write, delete: if isAdmin();
-    }
-
-    // ---------- Conteúdo do site (home) ----------
-    match /siteContent/{docId} {
-      allow read: if true;
-      allow write, delete: if isAdmin();
-    }
-
-    // ---------- Cupons ----------
-    // Leitura restrita: apenas admin ou usuário autenticado pode ver cupons.
-    // Cupons públicos expõem códigos e descontos para qualquer pessoa.
-    match /coupons/{couponId} {
-      allow read: if isAdmin() || request.auth != null;
-      allow write, delete: if isAdmin();
-    }
-
-    match /coupon_usage/{usageId} {
-      allow read: if isAdmin()
-        || (request.auth != null && resource.data.userId == request.auth.uid);
-      allow create: if request.auth != null;
-      allow update, delete: if isAdmin();
-    }
-
-    // ---------- Eventos de navegação ----------
-    match /eventos/{eventoId} {
-      allow create: if request.auth != null
-                    && request.resource.data.usuarioId == request.auth.uid;
-      allow read: if (request.auth != null
-                    && resource.data.usuarioId == request.auth.uid)
-                    || isAdmin();
-      allow update: if false;
-      allow delete: if isAdmin();
-    }
-
-    // ---------- Afiliados / Influencers ----------
-    // get (por código) é público: necessário para validar cupons de afiliado no checkout.
-    // list é restrito: impede enumerar todos os afiliados e expor ownerEmail em massa.
-    match /affiliates/{code} {
-      allow get: if true;
-      allow list: if isAdmin();
-      allow create, delete: if isAdmin();
-      allow update: if isAdmin()
-        || (request.auth != null && resource.data.ownerEmail == request.auth.token.email);
-    }
-
-    // Comissões pendentes — exige auth para evitar fraude por bots
-    match /affiliate_pending/{id} {
-      allow create: if request.auth != null
-        && request.resource.data.status == 'pending';
-      allow read, update, delete: if isAdmin()
-        || (request.auth != null && resource.data.buyerEmail == request.auth.token.email)
-        || (request.auth != null && resource.data.ownerEmail == request.auth.token.email);
-    }
-
-    // Solicitações para virar afiliado — validação mínima evita spam de bots
-    match /affiliate_requests/{id} {
-      allow create: if request.resource.data.keys().hasAll(['email', 'name'])
-        && request.resource.data.email is string
-        && request.resource.data.email.size() > 3
-        && request.resource.data.name is string
-        && request.resource.data.name.size() > 1;
-      allow read: if isAdmin()
-        || (request.auth != null && resource.data.email == request.auth.token.email);
-      allow update, delete: if isAdmin();
-    }
-
-    // ---------- Tentativas de fraude (log para o admin) ----------
-    match /fraud_attempts/{id} {
-      allow create: if request.auth != null;  // qualquer auth (inclusive anônimo) pode criar
-      allow read, update, delete: if isAdmin();
-    }
-
-    // ---------- Índice anti-fraude de CPF ----------
-    // Cada documento tem id = CPF (só dígitos) e campos:
-    //   productIds: string[]  — produtos já comprados com esse CPF
-    //   affiliateCodes: string[] — códigos de afiliado já usados
-    // Gravado no momento do pedido (server-side via create order flow).
-    // Leitura pública permite verificar antes de finalizar sem expor dados pessoais.
-    match /cpf_index/{cpf} {
-      allow read: if true;   // leitura pública — o doc só tem arrays de IDs, não dados pessoais
-      allow write: if request.auth != null;  // qualquer auth (incluindo anônimo) pode gravar
-    }
-
-    // ---------- Gastos de Marketing ----------
-    match /marketing_expenses/{id} {
-      allow read, write, delete: if isAdmin();
-    }
-
-    // ---------- Funcionários ----------
-    match /employees/{id} {
-      allow read, write, delete: if isAdmin();
-    }
-
-    match /employee_payments/{id} {
-      allow read, write, delete: if isAdmin();
-    }
-
-    // ---------- Administradores ----------
-    // 'get' individual necessário antes da autenticação Firebase (login por username).
-    // 'list' restrito para evitar enumeração em massa.
+    // Administradores
     match /admins/{adminId} {
       allow get: if true;
       allow list: if isAdmin();
       allow write: if isAdmin();
     }
 
-    // ---------- Settings (manutenção, config) ----------
+    // Settings
     match /settings/{docId} {
       allow read: if true;
       allow write: if isAdmin();
     }
 
-    // ---------- Analytics de visitantes ----------
-    // Qualquer visitante (sem auth) pode criar/incrementar os contadores.
-    // Leitura e deleção apenas pelo admin.
+    // Analytics de visitantes
     match /analytics_daily/{dateKey} {
       allow create, update: if true;
       allow read, delete: if isAdmin();
@@ -174,48 +67,5 @@ service cloud.firestore {
       allow create, update: if true;
       allow read, delete: if isAdmin();
     }
-
-    // ---------- Pedidos personalizados ----------
-    match /custom_requests/{reqId} {
-      allow create: if request.resource.data.status == 'new';
-      allow read, update, delete: if isAdmin();
-    }
-
-    // ---------- Cotações B2B ----------
-    match /b2b_requests/{reqId} {
-      allow create: if request.resource.data.status == 'new';
-      allow read, update, delete: if isAdmin();
-    }
-
-    // ---------- Vídeos de review ----------
-    match /video_reviews/{id} {
-      allow create: if request.resource.data.status == 'pending';
-      allow read: if isAdmin()
-        || (request.auth != null && resource.data.userId == request.auth.uid)
-        || (request.auth != null && resource.data.userEmail == request.auth.token.email);
-      allow update, delete: if isAdmin();
-    }
-
-    // ---------- Negociações ----------
-    match /negotiations/{negId} {
-      // Criação: usuário autenticado + dono da negociação (por UID ou email)
-      allow create: if request.auth != null
-        && (request.resource.data.userId == request.auth.uid
-            || request.resource.data.userEmail == request.auth.token.email);
-      // Leitura: admin vê tudo; cliente vê as próprias (por UID ou email)
-      allow read: if isAdmin()
-        || (request.auth != null
-            && (resource.data.userId == request.auth.uid
-                || resource.data.userEmail == request.auth.token.email));
-      // Atualização: admin pode tudo; cliente só pode marcar como visto ou expirar
-      allow update: if isAdmin()
-        || (request.auth != null
-            && (resource.data.userId == request.auth.uid
-                || resource.data.userEmail == request.auth.token.email)
-            && request.resource.data.diff(resource.data).affectedKeys()
-               .hasOnly(['clientSeen', 'status', 'resolvedAt', 'clientNotified', 'usedInOrderId']));
-      allow delete: if isAdmin();
-    }
-
   }
 }

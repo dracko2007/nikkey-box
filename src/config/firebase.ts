@@ -4,15 +4,15 @@ import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
-// Firebase Configuration
+// Firebase Configuration — Nikkey Box (projeto separado do Japan Express)
 const firebaseConfig = {
-  apiKey: "AIzaSyCKf6f9QqRk9VUPTzNr28gVEEn5sAdwr0g",
-  authDomain: "localstorage-98492.firebaseapp.com",
-  projectId: "localstorage-98492",
-  storageBucket: "localstorage-98492.firebasestorage.app",
-  messagingSenderId: "1087648598267",
-  appId: "1:1087648598267:web:fbfbc19ad31aa05839885e",
-  measurementId: "G-BH2VFVJC2J"
+  apiKey: "AIzaSyCyji55VsRGUJbIKFmzOU0ykQ6B8L_LjKE",
+  authDomain: "nikkey-box.firebaseapp.com",
+  projectId: "nikkey-box",
+  storageBucket: "nikkey-box.firebasestorage.app",
+  messagingSenderId: "685043539963",
+  appId: "1:685043539963:web:ee596d4caf27f7046db55e",
+  measurementId: "G-L8JD3B7E57"
 };
 
 const firebaseConfigReady = true;
