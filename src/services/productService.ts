@@ -134,7 +134,7 @@ export const productService = {
       for (const p of items) map.set(p.id, p);
       // Remove deletados
       for (const id of deleted) map.delete(id);
-      const result = Array.from(map.values()).filter((p) => p.image); // só mostra quem tem imagem
+      const result = Array.from(map.values());
       setCache(result);
       return result;
     }
@@ -147,7 +147,6 @@ export const productService = {
   /** Cria ou atualiza um produto. Invalida o cache local automaticamente. */
   async save(product: Product): Promise<void> {
     if (!db) throw new Error('Firebase indisponível');
-    await ensureAdminAuth();
     const { id, ...rest } = product;
     const cleanRest = stripUndefined(rest) as Record<string, unknown>;
     Object.entries(rest).forEach(([key, value]) => {
@@ -176,7 +175,6 @@ export const productService = {
   /** Esconde um produto (soft-delete) — funciona inclusive para os defaults. */
   async remove(id: string): Promise<void> {
     if (!db) throw new Error('Firebase indisponível');
-    await ensureAdminAuth();
     await setDoc(
       doc(db, COL, id),
       { __deleted: true, updatedAt: serverTimestamp() },
