@@ -1,17 +1,26 @@
-// Nikkey Box — upload direto para Firebase Storage (sem Cloudinary).
-import { storage } from '@/config/firebase';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+/**
+ * Nikkey Box — imagens salvas comprimidas no Firestore (sem Storage externo).
+ * Comprime para JPEG ~800px, ~80% qualidade antes de salvar.
+ * Evita CORS do Firebase Storage e dependência do Cloudinary.
+ */
 
-async function uploadToFirebase(blob: Blob, folder: string): Promise<string> {
-  if (!storage) throw new Error('Firebase Storage indisponível.');
-  const ext = blob.type.includes('webp') ? 'webp'
-    : blob.type.includes('png') ? 'png'
-    : blob.type.includes('gif') ? 'gif'
-    : 'jpg';
-  const path = `${folder}/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const storageRef = ref(storage, path);
-  await uploadBytes(storageRef, blob, { contentType: blob.type });
-  return getDownloadURL(storageRef);
+async function compressToJpeg(dataUrl: string, maxPx = 800, quality = 0.80): Promise<string> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxPx / Math.max(img.width, img.height));
+      const w = Math.round(img.width * scale);
+      const h = Math.round(img.height * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w;
+      canvas.height = h;
+      const ctx = canvas.getContext('2d')!;
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', quality));
+    };
+    img.onerror = () => resolve(dataUrl); // fallback sem compressão
+    img.src = dataUrl;
+  });
 }
 
 export const cloudinaryService = {
@@ -30,12 +39,12 @@ export const cloudinaryService = {
     !s.includes('res.cloudinary.com') &&
     !s.includes('firebasestorage.app'),
 
-  needsMigration: (s?: string) =>
-    typeof s === 'string' && s.startsWith('data:'),
+  needsMigration: (_s?: string) => false,
 
-  async uploadDataUrl(dataUrl: string, folder: string): Promise<string> {
-    const res = await fetch(dataUrl);
-    const blob = await res.blob();
-    return uploadToFirebase(blob, folder);
+  async uploadDataUrl(dataUrl: string, _folder: string): Promise<string> {
+    // Se já é uma URL externa (http), retorna direto — não precisa fazer upload
+    if (dataUrl.startsWith('http')) return dataUrl;
+    // Comprime e salva como dataUrl no Firestore
+    return compressToJpeg(dataUrl, 800, 0.80);
   },
 };
