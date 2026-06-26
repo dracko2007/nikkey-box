@@ -29,8 +29,7 @@ const Footer: React.FC = () => {
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/nikkey-box-logo.png" alt="Nikkey Box" className="h-12 w-auto object-contain"
-                onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
+              <img src="/logo.jpeg" alt="Nikkey Box" className="h-12 w-auto object-contain rounded-full" />
               <div className="flex items-baseline gap-0.5">
                 <span className="font-display text-lg font-black text-white tracking-tight">NIKKEY</span>
                 <span className="font-display text-lg font-bold" style={{color:'#E8B4C8'}}>box</span>

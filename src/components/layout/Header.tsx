@@ -83,13 +83,9 @@ const Header: React.FC = () => {
           {/* Logo Nikkey Box */}
           <Link to="/" className="flex items-center gap-2 group shrink-0">
             <img
-              src="/nikkey-box-logo.png"
+              src="/logo.jpeg"
               alt="Nikkey Box"
-              className="h-12 sm:h-14 w-auto object-contain group-hover:scale-105 transition-transform shrink-0"
-              onError={(e) => {
-                // fallback texto enquanto o logo não estiver no servidor
-                (e.target as HTMLImageElement).style.display = 'none';
-              }}
+              className="h-12 sm:h-14 w-auto object-contain rounded-full group-hover:scale-105 transition-transform shrink-0"
             />
             <div className="flex items-baseline gap-0.5">
               <span className="font-display text-xl sm:text-2xl font-black tracking-tight" style={{color:'#4A3F8C'}}>NIKKEY</span>
