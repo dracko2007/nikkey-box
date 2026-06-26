@@ -15,7 +15,10 @@ import { productEnglishName } from '@/utils/productName';
 const FeaturedProducts: React.FC = () => {
   const { t, language, selectedCountry } = useLanguage();
   const { products, loading } = useProducts();
-  const featuredProducts = products.filter(p => !p.hidden).slice(0, 4);
+  // Prioriza produtos marcados como "Promoção em Destaque", depois completa com outros
+  const promoDestaque = products.filter(p => !p.hidden && (p as any).featuredPromo);
+  const outros = products.filter(p => !p.hidden && !(p as any).featuredPromo);
+  const featuredProducts = [...promoDestaque, ...outros].slice(0, 4);
 
   const isEuro = ['Portugal', 'França', 'Itália', 'Espanha'].includes(selectedCountry);
   const currency = getCurrencyByCountry(selectedCountry);
@@ -51,8 +54,14 @@ const FeaturedProducts: React.FC = () => {
             </div>
           )) : featuredProducts.map((product) => {
             const promo = hasDiscount(product);
-            const smallPrice = getDisplayPrice(effectiveYen(product, 'small'));
-            const smallOriginal = getDisplayPrice(baseYen(product, 'small'));
+            // Aplica desconto de "Promoção em Destaque" se configurado
+            const featDiscount: number = (product as any).featuredPromoDiscount || 0;
+            const baseSmall = baseYen(product, 'small');
+            const smallOriginal = getDisplayPrice(baseSmall);
+            const smallPrice = featDiscount > 0
+              ? getDisplayPrice(Math.round(baseSmall * (1 - featDiscount / 100)))
+              : getDisplayPrice(effectiveYen(product, 'small'));
+            const isFeaturedPromo = !!(product as any).featuredPromo && featDiscount > 0;
 
             return (
               <Link
@@ -69,10 +78,17 @@ const FeaturedProducts: React.FC = () => {
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
 
-                  {promo && (
+                  {(isFeaturedPromo || promo) && (
                     <div className="absolute top-2 right-2">
                       <span className="bg-red-600 text-white font-black text-[10px] px-2 py-0.5 rounded-full shadow-sm">
-                        -{product.discountPercent}%
+                        -{isFeaturedPromo ? featDiscount : product.discountPercent}%
+                      </span>
+                    </div>
+                  )}
+                  {isFeaturedPromo && (
+                    <div className="absolute bottom-2 left-2">
+                      <span className="bg-purple-600 text-white font-black text-[9px] px-2 py-0.5 rounded shadow-sm">
+                        🌟 DESTAQUE
                       </span>
                     </div>
                   )}
@@ -104,10 +120,10 @@ const FeaturedProducts: React.FC = () => {
 
                   <div className="mt-4 flex items-baseline justify-between">
                     <span className="flex items-baseline gap-1.5">
-                      <span className={cn('text-lg md:text-xl font-bold', promo ? 'text-red-600' : 'text-primary')}>
+                      <span className={cn('text-lg md:text-xl font-bold', (promo || isFeaturedPromo) ? 'text-red-600' : 'text-primary')}>
                         {formatPrice(smallPrice, currency)}
                       </span>
-                      {promo && (
+                      {(promo || isFeaturedPromo) && (
                         <span className="text-[11px] font-semibold text-gray-500 line-through">
                           {formatPrice(smallOriginal, currency)}
                         </span>

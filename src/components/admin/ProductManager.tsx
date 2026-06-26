@@ -615,23 +615,7 @@ const ProductManager: React.FC = () => {
                     placeholder="Ex: Kit Kat Matcha, Bioré UV SPF50+"
                     className="flex-1 px-3 py-2 rounded-lg border border-border bg-background"
                   />
-                  <button
-                    type="button"
-                    onClick={handleEnrich}
-                    disabled={enriching || !editing.name.trim()}
-                    title="Busca descrição, fotos, preço e medidas no Yahoo/Rakuten + IA"
-                    className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-colors shrink-0"
-                  >
-                    {enriching
-                      ? <Loader2 className="w-4 h-4 animate-spin" />
-                      : <Sparkles className="w-4 h-4" />}
-                    <span className="hidden sm:inline">{enriching ? 'Buscando…' : 'Auto-preencher'}</span>
-                    <span className="sm:hidden">{enriching ? '…' : 'IA'}</span>
-                  </button>
                 </div>
-                <p className="text-[11px] text-muted-foreground mt-1">
-                  ✨ <strong>Auto-preencher</strong>: busca descrição, preço, peso, medidas da embalagem e até 5 fotos automaticamente via Rakuten/Yahoo.
-                </p>
                 <div className="flex items-center gap-3 mt-1.5 flex-wrap">
                   <span className="text-[11px] text-muted-foreground font-medium">Buscar:</span>
                   {([
@@ -773,40 +757,41 @@ const ProductManager: React.FC = () => {
                   <p className="text-[11px] text-muted-foreground mt-1.5">Oculto = fica registrado, mas o cliente não vê.</p>
                 </div>
 
-                {/* Restrição de destino + Origem */}
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold block">Restrição de venda por destino</label>
-                  <select
-                    value={editing.deliveryRestrict || ''}
-                    onChange={e => setEditing({ ...editing, deliveryRestrict: (e.target.value as any) || undefined })}
-                    className="w-full px-3 py-2 rounded-lg border border-border bg-background text-sm"
-                  >
-                    <option value="">Sem restrição (vende em qualquer destino)</option>
-                    <option value="exterior-only">🌍 Somente exterior — produto japonês, não vende dentro do Japão</option>
-                    <option value="japan-only">🇯🇵 Somente Japão — produto importado, vende só dentro do Japão</option>
-                  </select>
-                  <div className="flex items-center gap-2 mt-1">
-                    <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
+                {/* Promoção em Destaque */}
+                <div className="bg-purple-50 dark:bg-purple-950/20 border border-purple-200 dark:border-purple-900 rounded-lg p-3 col-span-2">
+                  <label className="flex items-center gap-2 cursor-pointer select-none mb-2">
+                    <input
+                      type="checkbox"
+                      checked={!!(editing as any).featuredPromo}
+                      onChange={e => setEditing({ ...editing, featuredPromo: e.target.checked || undefined } as any)}
+                      className="w-4 h-4 rounded accent-primary"
+                    />
+                    <span className="text-sm font-semibold">🌟 <strong>Promoção em Destaque</strong> — aparece na seção de ofertas da página inicial</span>
+                  </label>
+                  {(editing as any).featuredPromo && (
+                    <div className="mt-2 space-y-2">
+                      <label className="text-xs font-semibold text-purple-700 dark:text-purple-300 block">Desconto da promoção em destaque (%)</label>
                       <input
-                        type="checkbox"
-                        checked={!!editing.origin}
-                        onChange={e => setEditing({ ...editing, origin: e.target.checked ? 'importado' : undefined })}
-                        className="w-4 h-4 rounded accent-primary"
+                        type="number"
+                        min={1}
+                        max={99}
+                        value={(editing as any).featuredPromoDiscount || ''}
+                        onChange={e => {
+                          const v = Math.max(1, Math.min(99, Number(e.target.value) || 0));
+                          setEditing({ ...editing, featuredPromoDiscount: v } as any);
+                        }}
+                        placeholder="Ex: 20 = 20% de desconto"
+                        className="w-full px-3 py-2 rounded-lg border border-purple-300 bg-background text-sm"
                       />
-                      <span>📦 Marcar como <strong>Importado</strong> (produto nacional vendido no Japão — exibe badge na loja)</span>
-                    </label>
-                  </div>
-                  <div className="flex items-center gap-2 mt-2">
-                    <label className="flex items-center gap-2 cursor-pointer select-none text-sm">
-                      <input
-                        type="checkbox"
-                        checked={!!editing.noPsFee}
-                        onChange={e => setEditing({ ...editing, noPsFee: e.target.checked || undefined })}
-                        className="w-4 h-4 rounded accent-primary"
-                      />
-                      <span>💸 <strong>Isentar taxa de Personal Shopper</strong> (¥1.000/un — não cobra essa taxa neste produto)</span>
-                    </label>
-                  </div>
+                      {(editing as any).featuredPromoDiscount && variants()[0]?.price ? (
+                        <p className="text-xs text-purple-700 dark:text-purple-300">
+                          De <s>¥{variants()[0].price.toLocaleString()}</s> por{' '}
+                          <strong className="text-green-600">¥{Math.round(variants()[0].price * (1 - (editing as any).featuredPromoDiscount / 100)).toLocaleString()}</strong>
+                          {' '}— economia de ¥{Math.round(variants()[0].price * (editing as any).featuredPromoDiscount / 100).toLocaleString()}
+                        </p>
+                      ) : null}
+                    </div>
+                  )}
                 </div>
               </div>
 
