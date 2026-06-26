@@ -4,7 +4,7 @@
  * Evita CORS do Firebase Storage e dependência do Cloudinary.
  */
 
-async function compressToJpeg(dataUrl: string, maxPx = 800, quality = 0.80): Promise<string> {
+async function compressToJpeg(dataUrl: string, maxPx = 500, quality = 0.70): Promise<string> {
   return new Promise((resolve) => {
     const img = new Image();
     img.onload = () => {
@@ -42,9 +42,9 @@ export const cloudinaryService = {
   needsMigration: (_s?: string) => false,
 
   async uploadDataUrl(dataUrl: string, _folder: string): Promise<string> {
-    // Se já é uma URL externa (http), retorna direto — não precisa fazer upload
+    // URL externa (http) → retorna direto
     if (dataUrl.startsWith('http')) return dataUrl;
-    // Comprime e salva como dataUrl no Firestore
-    return compressToJpeg(dataUrl, 800, 0.80);
+    // Comprime para JPEG 500px/70% (~15-25KB base64) e salva no Firestore
+    return compressToJpeg(dataUrl, 500, 0.70);
   },
 };
