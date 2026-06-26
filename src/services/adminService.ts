@@ -69,7 +69,6 @@ export const adminService = {
     const list: AdminEntry[] = [{ username: ADMIN_EMAIL, name: 'Administrador', role: 3, addedBy: 'sistema' }];
     if (!db) return list;
     try {
-      await ensureAdminAuth();
       const snap = await getDocs(collection(db, COL));
       snap.forEach((d) => {
         const data = d.data() as any;
@@ -95,7 +94,6 @@ export const adminService = {
     if (!id) return { ok: false, error: 'Nome inválido' };
     if (!password || password.length < 8) return { ok: false, error: 'Senha muito curta (mín. 8 caracteres)' };
     try {
-      await ensureAdminAuth();
       await setDoc(doc(db, COL, id), {
         name: name.trim(),
         password,
@@ -115,7 +113,6 @@ export const adminService = {
     if (username.toLowerCase() === ADMIN_EMAIL.toLowerCase()) return false;
     const id = slug(username);
     try {
-      await ensureAdminAuth();
       await deleteDoc(doc(db, COL, id));
       return true;
     } catch (e) {
