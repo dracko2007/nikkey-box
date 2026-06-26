@@ -1,0 +1,39 @@
+// Firebase Configuration and Initialization
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getFirestore } from 'firebase/firestore';
+import { getStorage } from 'firebase/storage';
+
+// Firebase Configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyCKf6f9QqRk9VUPTzNr28gVEEn5sAdwr0g",
+  authDomain: "localstorage-98492.firebaseapp.com",
+  projectId: "localstorage-98492",
+  storageBucket: "localstorage-98492.firebasestorage.app",
+  messagingSenderId: "1087648598267",
+  appId: "1:1087648598267:web:fbfbc19ad31aa05839885e",
+  measurementId: "G-BH2VFVJC2J"
+};
+
+const firebaseConfigReady = true;
+const firebaseConfigSource = 'direct-config';
+const firebaseDisabled = import.meta.env.VITE_DISABLE_FIREBASE === 'true';
+const allowLocalOnly = import.meta.env.VITE_ALLOW_LOCAL_ONLY === 'true';
+
+// Initialize Firebase
+let app: ReturnType<typeof initializeApp> | null = null;
+let auth: ReturnType<typeof getAuth> | null = null;
+let db: ReturnType<typeof getFirestore> | null = null;
+let storage: ReturnType<typeof getStorage> | null = null;
+
+try {
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  storage = getStorage(app);
+  if (import.meta.env.DEV) console.log('✅ Firebase initialized with project:', firebaseConfig.projectId);
+} catch (error) {
+  console.error('❌ Firebase initialization failed:', error);
+}
+
+export { app, auth, db, storage, firebaseConfig, firebaseConfigReady, firebaseDisabled, allowLocalOnly, firebaseConfigSource };

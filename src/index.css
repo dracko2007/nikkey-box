@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Hide scrollbar for horizontal-scroll tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  :root {
+    /* Japan Express Theme - Pink */
+    --background: 0 0% 100%;
+    --foreground: 330 15% 10%;
+
+    --card: 0 0% 98%;
+    --card-foreground: 330 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 330 15% 10%;
+
+    /* Primary - Japan Express Pink */
+    --primary: 330 85% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - Light rose tint */
+    --secondary: 330 40% 96%;
+    --secondary-foreground: 330 60% 35%;
+
+    --muted: 330 20% 95%;
+    --muted-foreground: 330 10% 45%;
+
+    /* Accent - Deep rose/magenta */
+    --accent: 315 80% 48%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 330 20% 88%;
+    --input: 330 20% 88%;
+    --ring: 330 85% 55%;
+
+    --radius: 0.5rem;
+
+    /* Mapped custom colors */
+    --caramel: 330 85% 55%;
+    --caramel-light: 330 85% 92%;
+    --caramel-dark: 330 85% 38%;
+    --cream: 0 0% 98%;
+    --chocolate: 315 80% 48%;
+    --coffee: 330 15% 20%;
+    --gold: 45 100% 50%;
+
+    /* Gradients */
+    --gradient-caramel: linear-gradient(135deg, hsl(330 85% 55%) 0%, hsl(315 80% 48%) 100%);
+    --gradient-cream: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(330 30% 97%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(330 85% 94%) 0%, hsl(330 60% 97%) 45%, hsl(0 0% 100%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 2px 10px -2px hsl(330 50% 20% / 0.06);
+    --shadow-card: 0 4px 20px -6px hsl(330 50% 20% / 0.12);
+    --shadow-elevated: 0 15px 35px -10px hsl(330 50% 20% / 0.18);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 330 85% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 330 30% 95%;
+    --sidebar-accent-foreground: 330 60% 25%;
+    --sidebar-border: 330 20% 88%;
+    --sidebar-ring: 330 85% 55%;
+  }
+
+  .dark {
+    --background: 330 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 330 12% 12%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 330 15% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 330 85% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 330 15% 18%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 330 10% 20%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 315 75% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 330 10% 22%;
+    --input: 330 10% 22%;
+    --ring: 330 85% 60%;
+
+    --sidebar-background: 330 15% 8%;
+    --sidebar-foreground: 330 20% 85%;
+    --sidebar-primary: 330 85% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 330 12% 15%;
+    --sidebar-accent-foreground: 330 20% 85%;
+    --sidebar-border: 330 10% 20%;
+    --sidebar-ring: 330 85% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  /* Largura travada ao viewport SEM bloquear o pinch-zoom.
+     overflow-x:hidden fica SÓ no body (no html, ele desabilita o zoom no mobile). */
+  html {
+    width: 100%;
+    -webkit-text-size-adjust: 100%; /* evita o iOS reescalar o texto */
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip; /* contém o overflow sem virar contexto de scroll */
+  }
+
+  /* Nenhum elemento pode estourar a largura da tela */
+  img, video, canvas, svg, iframe, table {
+    max-width: 100%;
+  }
+
+  /* O .container nunca pode exceder a viewport (reforço além do config) */
+  .container {
+    max-width: 100%;
+  }
+
+  /* Palavras/URLs muito longas quebram em vez de empurrar o layout */
+  p, span, h1, h2, h3, h4, h5, h6, a, li, td {
+    overflow-wrap: break-word;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Marquee da barra de confiança no mobile (rola sem cortar as pontas) */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .animate-marquee {
+    animation: marquee 18s linear infinite;
+    will-change: transform;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 shadow-soft hover:shadow-card font-semibold rounded;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-all duration-300 font-semibold rounded;
+  }
+
+  .btn-accent {
+    @apply bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 font-semibold rounded;
+  }
+
+  .card-product {
+    @apply bg-card rounded-lg border border-border shadow-soft hover:shadow-card transition-all duration-300 overflow-hidden hover:-translate-y-1;
+  }
+
+  .gradient-caramel {
+    background: var(--gradient-caramel);
+  }
+
+  .gradient-cream {
+    background: var(--gradient-cream);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-caramel);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fadeUp 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+}

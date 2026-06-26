@@ -1,0 +1,19 @@
+{
+  "claude-code.allowDangerouslySkipPermissions": true,
+  "claude-code.initialPermissionMode": "bypassPermissions",
+  "claude-code.autoMemoryEnabled": true,
+  "claude-code.enableYoloMode": true,
+  "claude-code.maxContextTokens": 200000,
+  "claude-code.enableDeepThinking": true,
+  "claude-code.defaultModel": "claude-3.5-sonnet-latest", // ou opus se disponível
+  "claude-code.enableFileEditing": true,
+  "claude-code.enableTerminalCommands": true,
+  
+  // Recomendado para seu projeto
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "tailwindCSS.experimental.classRegex": [
+    ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
+  ]
+}
