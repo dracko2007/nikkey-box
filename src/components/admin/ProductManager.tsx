@@ -616,25 +616,6 @@ const ProductManager: React.FC = () => {
                     className="flex-1 px-3 py-2 rounded-lg border border-border bg-background"
                   />
                 </div>
-                <div className="flex items-center gap-3 mt-1.5 flex-wrap">
-                  <span className="text-[11px] text-muted-foreground font-medium">Buscar:</span>
-                  {([
-                    { key: 'price', label: 'Valor' },
-                    { key: 'images', label: 'Imagens' },
-                    { key: 'description', label: 'Descrição' },
-                    { key: 'weight', label: 'Peso' },
-                  ] as const).map(({ key, label }) => (
-                    <label key={key} className="flex items-center gap-1 cursor-pointer select-none">
-                      <input
-                        type="checkbox"
-                        checked={enrichFields[key]}
-                        onChange={(e) => setEnrichFields(prev => ({ ...prev, [key]: e.target.checked }))}
-                        className="w-3.5 h-3.5 rounded accent-amber-500"
-                      />
-                      <span className="text-[11px] text-muted-foreground">{label}</span>
-                    </label>
-                  ))}
-                </div>
               </div>
 
               {/* Categoria + Sabor/tag */}
